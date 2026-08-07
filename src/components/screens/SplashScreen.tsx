@@ -46,7 +46,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-between p-6 select-none max-w-md mx-auto"
+      className="absolute inset-0 z-50 bg-white flex flex-col items-center justify-between p-6 select-none w-full h-full"
     >
       {/* Top Header Version Badge */}
       <div className="w-full pt-4 flex justify-end">

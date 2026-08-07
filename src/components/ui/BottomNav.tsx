@@ -65,7 +65,7 @@ export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
   }, [activeTab]);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] px-4 py-2">
+    <nav className="sticky bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] px-4 py-2 mt-auto">
       <div ref={navRef} className="max-w-md mx-auto flex items-center justify-around relative">
         {/* Sliding Active Indicator Pill */}
         <div

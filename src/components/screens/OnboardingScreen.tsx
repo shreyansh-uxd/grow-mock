@@ -227,7 +227,7 @@ export default function OnboardingScreen({ onFinish }: OnboardingScreenProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-[99999] bg-white flex flex-col justify-between p-6 select-none max-w-md mx-auto">
+    <div className="absolute inset-0 z-50 bg-white flex flex-col justify-between p-6 select-none w-full h-full">
       {/* Top Header: Skip Button */}
       <div className="flex items-center justify-between pt-2">
         <div className="flex items-center gap-1.5">

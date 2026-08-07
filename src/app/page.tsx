@@ -18,6 +18,7 @@ import SearchModal from "@/components/modals/SearchModal";
 import PageTransition from "@/components/animations/PageTransition";
 import SplashScreen from "@/components/screens/SplashScreen";
 import OnboardingScreen from "@/components/screens/OnboardingScreen";
+import MobileFrame from "@/components/ui/MobileFrame";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
 
@@ -50,21 +51,20 @@ export default function Home() {
 
   return (
     <StockProvider>
-      {/* 1. Splash Screen Mode */}
-      {screenMode === "splash" && (
-        <SplashScreen onComplete={() => setScreenMode("onboarding")} />
-      )}
+      <MobileFrame>
+        {/* 1. Splash Screen Mode */}
+        {screenMode === "splash" && (
+          <SplashScreen onComplete={() => setScreenMode("onboarding")} />
+        )}
 
-      {/* 2. Onboarding Screen Mode (3 Interactive Slides) */}
-      {screenMode === "onboarding" && (
-        <OnboardingScreen onFinish={() => setScreenMode("app")} />
-      )}
+        {/* 2. Onboarding Screen Mode (3 Interactive Slides) */}
+        {screenMode === "onboarding" && (
+          <OnboardingScreen onFinish={() => setScreenMode("app")} />
+        )}
 
-      {/* 3. Main App Mode */}
-      {screenMode === "app" && (
-        <div className="min-h-screen bg-white text-slate-900">
-          <div className="max-w-md mx-auto min-h-screen bg-white shadow-xl relative border-x border-slate-100 flex flex-col">
-            
+        {/* 3. Main App Mode */}
+        {screenMode === "app" && (
+          <div className="w-full flex-1 flex flex-col relative bg-white">
             {/* Sticky Header with Navbar & LightMarketTicker Bar */}
             <div className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs">
               <Navbar
@@ -128,8 +128,8 @@ export default function Home() {
               onSelectStock={(stock) => setSelectedStock(stock)}
             />
           </div>
-        </div>
-      )}
+        )}
+      </MobileFrame>
     </StockProvider>
   );
 }

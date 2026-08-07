@@ -172,7 +172,7 @@ export default function PageTransition({ activeKey, direction, children }: PageT
   return (
     <div
       ref={containerRef}
-      className="relative flex-1 overflow-hidden bg-white"
+      className="relative flex-1 overflow-x-hidden bg-white"
     >
       <div
         ref={contentRef}

@@ -30,7 +30,7 @@ export function StockProvider({ children }: { children: React.ReactNode }) {
 
   const [stocksMap, setStocksMap] = useState<Record<string, StockTickState>>(initialMap);
 
-  // High-frequency live price ticks (350ms interval = 2.8 ticks per second)
+  // Balanced live price tick interval (900ms) with 2 stocks per tick
   useEffect(() => {
     const interval = setInterval(() => {
       setStocksMap((prevMap) => {
@@ -38,8 +38,7 @@ export function StockProvider({ children }: { children: React.ReactNode }) {
         const keys = Object.keys(nextMap);
         if (keys.length === 0) return prevMap;
 
-        // Pick 4 stocks per tick cycle for rapid live market updates
-        const numToTick = 4;
+        const numToTick = 2;
         for (let i = 0; i < numToTick; i++) {
           const randomKey = keys[Math.floor(Math.random() * keys.length)];
           const current = nextMap[randomKey];
@@ -64,7 +63,7 @@ export function StockProvider({ children }: { children: React.ReactNode }) {
 
         return nextMap;
       });
-    }, 350);
+    }, 900);
 
     return () => clearInterval(interval);
   }, []);

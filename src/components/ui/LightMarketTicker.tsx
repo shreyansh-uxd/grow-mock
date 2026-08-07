@@ -22,7 +22,7 @@ const INITIAL_INDICES: IndexData[] = [
 export default function LightMarketTicker() {
   const [indices, setIndices] = useState<IndexData[]>(INITIAL_INDICES);
 
-  // Continuous market index ticks with exact 0.6s (600ms) gap
+  // Balanced market index tick interval (1400ms)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndices((prev) =>
@@ -43,7 +43,7 @@ export default function LightMarketTicker() {
           };
         })
       );
-    }, 600);
+    }, 1400);
 
     return () => clearInterval(interval);
   }, []);
@@ -76,7 +76,7 @@ export default function LightMarketTicker() {
 
                 <div className="flex items-center gap-1 font-mono text-[11px]">
                   <span className="font-bold text-slate-900 whitespace-nowrap">
-                    {item.value.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                    {item.value.toLocaleString("en-US", { minimumFractionDigits: 2 })}
                   </span>
 
                   <span

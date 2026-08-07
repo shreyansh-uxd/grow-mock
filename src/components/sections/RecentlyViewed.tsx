@@ -26,7 +26,7 @@ export default function RecentlyViewed({ onSelectStock }: RecentlyViewedProps) {
       {/* Header with Slider Navigation Controls */}
       <div className="flex items-center justify-between px-4 mb-3">
         <div className="flex items-center gap-2">
-          <h2 className="text-sm font-bold text-slate-900">Recently Viewed</h2>
+          <h2 className="text-sm font-bold text-slate-700">Recently Viewed</h2>
           <span className="flex items-center gap-1 text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Live Updates
@@ -81,7 +81,7 @@ export default function RecentlyViewed({ onSelectStock }: RecentlyViewedProps) {
               </div>
 
               {/* Company Name */}
-              <span className="text-[11px] font-bold text-slate-800 uppercase tracking-tight group-hover:text-emerald-600 transition-colors truncate max-w-full">
+              <span className="text-[11px] font-bold text-slate-700 uppercase tracking-tight group-hover:text-emerald-600 transition-colors truncate max-w-full">
                 {stock.name}
               </span>
 

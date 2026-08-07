@@ -64,7 +64,7 @@ export default function FinancialTools() {
     <section className="py-4 bg-white">
       {/* Header with Carousel Controls */}
       <div className="flex items-center justify-between px-4 mb-3">
-        <h2 className="text-sm font-bold text-slate-900">Tools</h2>
+        <h2 className="text-sm font-bold text-slate-700">Tools</h2>
         <div className="flex items-center gap-1">
           <button
             onClick={() => scroll("left")}
@@ -120,7 +120,7 @@ export default function FinancialTools() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-sm font-bold text-slate-900 mb-0.5 leading-snug">
+                <h3 className="text-sm font-bold text-slate-700 mb-0.5 leading-snug">
                   {tool.name}
                 </h3>
 

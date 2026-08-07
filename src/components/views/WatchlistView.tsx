@@ -146,7 +146,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
               <div className="flex items-center gap-3">
                 <CompanyLogo symbol={stock.symbol} className="h-10 w-10" />
                 <div>
-                  <h3 className="text-xs font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="text-xs font-bold text-slate-700 group-hover:text-emerald-700 transition-colors">
                     {stock.name}
                   </h3>
                   <span className="text-[10px] text-slate-400 font-mono">NSE • {stock.symbol}</span>

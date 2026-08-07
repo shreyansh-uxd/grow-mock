@@ -37,7 +37,7 @@ export default function Navbar({ activeTab, onOpenSearch, onOpenProfile }: Navba
             />
           </div>
           <div className="h-5 w-px bg-slate-200" />
-          <h1 className="text-xl font-extrabold text-slate-800 tracking-tight font-sans">
+          <h1 className="text-xl font-extrabold text-slate-700 tracking-tight font-sans">
             {currentTitle}
           </h1>
         </div>

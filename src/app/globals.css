@@ -3,7 +3,7 @@
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #111827;
+    --foreground: #334155;
     --groww-green: #00b386;
     --groww-green-dark: #00875a;
     --groww-green-light: #e6f7f2;
@@ -14,7 +14,7 @@
 
   body {
     background-color: #ffffff;
-    color: #111827;
+    color: #334155;
     font-family: var(--font-sans);
     -webkit-tap-highlight-color: transparent;
   }

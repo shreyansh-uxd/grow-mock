@@ -170,7 +170,7 @@ export default function MoreView({
                   <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-800">{p.name}</h4>
+                  <h4 className="text-xs font-bold text-slate-700">{p.name}</h4>
                   <p className="text-[10px] text-slate-400 font-mono">{p.desc}</p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function MoreView({
             >
               <div className="flex items-center gap-3">
                 <User className="h-4 w-4 text-slate-500" />
-                <span className="text-xs font-bold text-slate-800">My Profile &amp; Demat Info</span>
+                <span className="text-xs font-bold text-slate-700">My Profile &amp; Demat Info</span>
               </div>
               <ChevronRight className="h-4 w-4 text-slate-400" />
             </div>
@@ -196,7 +196,7 @@ export default function MoreView({
             <div className="p-3.5 flex items-center justify-between hover:bg-slate-50 cursor-pointer">
               <div className="flex items-center gap-3">
                 <CreditCard className="h-4 w-4 text-slate-500" />
-                <span className="text-xs font-bold text-slate-800">Bank Details &amp; AutoPay</span>
+                <span className="text-xs font-bold text-slate-700">Bank Details &amp; AutoPay</span>
               </div>
               <ChevronRight className="h-4 w-4 text-slate-400" />
             </div>
@@ -204,7 +204,7 @@ export default function MoreView({
             <div className="p-3.5 flex items-center justify-between hover:bg-slate-50 cursor-pointer">
               <div className="flex items-center gap-3">
                 <FileText className="h-4 w-4 text-slate-500" />
-                <span className="text-xs font-bold text-slate-800">Reports &amp; Tax P&amp;L Statements</span>
+                <span className="text-xs font-bold text-slate-700">Reports &amp; Tax P&amp;L Statements</span>
               </div>
               <ChevronRight className="h-4 w-4 text-slate-400" />
             </div>
@@ -212,7 +212,7 @@ export default function MoreView({
             <div className="p-3.5 flex items-center justify-between hover:bg-slate-50 cursor-pointer">
               <div className="flex items-center gap-3">
                 <Lock className="h-4 w-4 text-slate-500" />
-                <span className="text-xs font-bold text-slate-800">Security, PIN &amp; Biometrics</span>
+                <span className="text-xs font-bold text-slate-700">Security, PIN &amp; Biometrics</span>
               </div>
               <ChevronRight className="h-4 w-4 text-slate-400" />
             </div>
@@ -220,7 +220,7 @@ export default function MoreView({
             <div className="p-3.5 flex items-center justify-between hover:bg-slate-50 cursor-pointer">
               <div className="flex items-center gap-3">
                 <HelpCircle className="h-4 w-4 text-slate-500" />
-                <span className="text-xs font-bold text-slate-800">Customer Help &amp; Support 24x7</span>
+                <span className="text-xs font-bold text-slate-700">Customer Help &amp; Support 24x7</span>
               </div>
               <ChevronRight className="h-4 w-4 text-slate-400" />
             </div>

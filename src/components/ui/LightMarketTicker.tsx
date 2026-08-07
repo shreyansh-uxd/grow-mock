@@ -75,7 +75,7 @@ export default function LightMarketTicker() {
                 </span>
 
                 <div className="flex items-center gap-1 font-mono text-[11px]">
-                  <span className="font-bold text-slate-900 whitespace-nowrap">
+                  <span className="font-bold text-slate-700 whitespace-nowrap">
                     {item.value.toLocaleString("en-US", { minimumFractionDigits: 2 })}
                   </span>
 

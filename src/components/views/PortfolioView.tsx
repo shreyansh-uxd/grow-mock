@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { PORTFOLIO_HOLDINGS, ACTIVE_SIPS, Stock } from "@/lib/stocks-data";
 import CompanyLogo from "@/components/ui/CompanyLogo";
+import CountUpNumber from "@/components/animations/CountUpNumber";
 import { Calendar, ArrowUpRight, ShieldCheck } from "lucide-react";
 
 interface PortfolioViewProps {
@@ -28,8 +29,8 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
             onClick={() => setActiveTab("holdings")}
             className={`flex-1 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
               activeTab === "holdings"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-500 hover:text-slate-900"
+                ? "bg-white text-slate-700 shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Holdings ({PORTFOLIO_HOLDINGS.length})
@@ -38,8 +39,8 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
             onClick={() => setActiveTab("sips")}
             className={`flex-1 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
               activeTab === "sips"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-500 hover:text-slate-900"
+                ? "bg-white text-slate-700 shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Active SIPs ({ACTIVE_SIPS.length})
@@ -59,13 +60,19 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
           </div>
 
           <div>
-            <span className="text-3xl font-extrabold text-slate-900 tracking-tight font-mono">
-              ${totalCurrent.toLocaleString("en-US", { minimumFractionDigits: 2 })}
-            </span>
+            <CountUpNumber
+              value={totalCurrent}
+              prefix="$"
+              className="text-3xl font-extrabold text-slate-700 tracking-tight font-mono block"
+            />
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-xs font-bold text-emerald-600 flex items-center gap-0.5">
-                <ArrowUpRight className="h-4 w-4" />
-                +${totalReturns.toLocaleString("en-US", { minimumFractionDigits: 2 })} ({totalReturnsPercent.toFixed(2)}%)
+              <span className="text-xs font-bold text-emerald-600 flex items-center gap-0.5 font-mono">
+                <ArrowUpRight className="h-4 w-4 shrink-0" />
+                <CountUpNumber
+                  value={totalReturns}
+                  prefix="+$"
+                  suffix={` (${totalReturnsPercent.toFixed(2)}%)`}
+                />
               </span>
               <span className="text-xs text-slate-400 font-medium">Total Returns</span>
             </div>
@@ -75,15 +82,19 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 font-mono text-xs">
             <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-0.5">
               <span className="text-slate-400 block text-[10px] uppercase">Invested Amount</span>
-              <span className="font-extrabold text-slate-900">
-                ${totalInvested.toLocaleString("en-US", { minimumFractionDigits: 2 })}
-              </span>
+              <CountUpNumber
+                value={totalInvested}
+                prefix="$"
+                className="font-extrabold text-slate-700 block"
+              />
             </div>
             <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-0.5">
               <span className="text-slate-400 block text-[10px] uppercase">1D Returns</span>
-              <span className="font-extrabold text-emerald-600">
-                +${dayReturns.toLocaleString("en-US", { minimumFractionDigits: 2 })}
-              </span>
+              <CountUpNumber
+                value={dayReturns}
+                prefix="+$"
+                className="font-extrabold text-emerald-600 block"
+              />
             </div>
           </div>
 
@@ -130,7 +141,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
                   <div className="flex items-center gap-3">
                     <CompanyLogo symbol={h.symbol} className="h-10 w-10" />
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900">{h.name}</h3>
+                      <h3 className="text-sm font-bold text-slate-700">{h.name}</h3>
                       <span className="text-[11px] text-slate-400 font-mono">
                         {h.quantity} Qty • Avg ${h.avgPrice.toFixed(2)}
                       </span>
@@ -138,7 +149,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
                   </div>
 
                   <div className="text-right font-mono">
-                    <span className="text-sm font-extrabold text-slate-900 block">
+                    <span className="text-sm font-extrabold text-slate-700 block">
                       ${h.currentValue.toLocaleString("en-US", { minimumFractionDigits: 2 })}
                     </span>
                     <span className="text-xs font-semibold text-emerald-600">
@@ -163,7 +174,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
               <div key={sip.id} className="groww-card p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">{sip.fundName}</h3>
+                    <h3 className="text-sm font-bold text-slate-700">{sip.fundName}</h3>
                     <span className="text-xs text-slate-400 font-mono">Monthly SIP</span>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
@@ -173,7 +184,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
 
                 <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs font-mono">
                   <span className="text-slate-500">Monthly Amount</span>
-                  <span className="font-bold text-slate-900">${sip.monthlyAmount.toLocaleString()}</span>
+                  <span className="font-bold text-slate-700">${sip.monthlyAmount.toLocaleString()}</span>
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-mono text-slate-500">

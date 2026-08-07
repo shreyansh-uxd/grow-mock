@@ -85,19 +85,19 @@ export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileD
         </div>
 
         {/* Wallet Balance Card */}
-        <div className="bg-slate-900 rounded-3xl p-5 text-white shadow-xl space-y-4">
+        <div className="bg-white rounded-3xl p-5 shadow-md border border-slate-200 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Wallet className="h-5 w-5 text-emerald-400" />
-              <span className="text-xs font-mono text-slate-400">GROWW BALANCE</span>
+              <Wallet className="h-5 w-5 text-emerald-600" />
+              <span className="text-xs font-mono text-slate-500">GROWW BALANCE</span>
             </div>
-            <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">
+            <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-mono border border-emerald-200">
               Instant Withdrawal
             </span>
           </div>
 
           <div>
-            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
+            <span className="text-3xl font-extrabold text-slate-900 tracking-tight font-mono">
               ₹{walletBalance.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
             </span>
           </div>
@@ -112,7 +112,7 @@ export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileD
             </button>
             <button
               onClick={() => alert("Withdrawal request submitted successfully!")}
-              className="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-700"
+              className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-200"
             >
               <ArrowDownLeft className="h-4 w-4" />
               <span>Withdraw</span>

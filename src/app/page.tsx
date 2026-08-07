@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Navbar from "@/components/ui/Navbar";
 import LightMarketTicker from "@/components/ui/LightMarketTicker";
 import RecentlyViewed from "@/components/sections/RecentlyViewed";
@@ -15,28 +15,34 @@ import MoreView from "@/components/views/MoreView";
 import BottomNav from "@/components/ui/BottomNav";
 import StockDetailModal from "@/components/modals/StockDetailModal";
 import SearchModal from "@/components/modals/SearchModal";
+import PageTransition from "@/components/animations/PageTransition";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+
+/* Tab ordering used to determine slide direction */
+const TAB_ORDER = ["stocks", "watchlist", "portfolio", "more"];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("stocks");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
-  const viewContainerRef = useRef<HTMLDivElement>(null);
+  const [transitionDirection, setTransitionDirection] = useState(0);
+  const prevTabRef = useRef("stocks");
 
-  useGSAP(
-    () => {
-      if (!viewContainerRef.current) return;
-      gsap.fromTo(
-        viewContainerRef.current,
-        { opacity: 0, y: 8 },
-        { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }
-      );
+  const handleTabChange = useCallback(
+    (newTab: string) => {
+      if (newTab === activeTab) return;
+
+      const prevIdx = TAB_ORDER.indexOf(prevTabRef.current);
+      const nextIdx = TAB_ORDER.indexOf(newTab);
+      const dir = nextIdx > prevIdx ? 1 : -1;
+
+      setTransitionDirection(dir);
+      prevTabRef.current = newTab;
+      setActiveTab(newTab);
     },
-    { scope: viewContainerRef, dependencies: [activeTab] }
+    [activeTab]
   );
 
   return (
@@ -55,8 +61,8 @@ export default function Home() {
             <LightMarketTicker />
           </div>
 
-          {/* Dynamic View Router */}
-          <main className="flex-1 bg-white" ref={viewContainerRef}>
+          {/* Dynamic View Router with GSAP Page Transitions */}
+          <PageTransition activeKey={activeTab} direction={transitionDirection}>
             {activeTab === "stocks" && (
               <div className="pb-16 bg-white">
                 <RecentlyViewed onSelectStock={(stock) => setSelectedStock(stock)} />
@@ -88,10 +94,10 @@ export default function Home() {
                 setProfileDrawerOpen={setProfileDrawerOpen}
               />
             )}
-          </main>
+          </PageTransition>
 
           {/* Bottom Navigation */}
-          <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
+          <BottomNav activeTab={activeTab} setActiveTab={handleTabChange} />
 
           {/* Stock Detail Modal */}
           <StockDetailModal

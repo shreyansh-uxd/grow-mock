@@ -94,17 +94,17 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
     <div className="pb-20 bg-white min-h-screen relative">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-20 left-4 right-4 z-40 p-3.5 rounded-2xl bg-slate-900 text-white font-mono text-xs shadow-2xl border border-slate-700 flex items-center justify-between animate-bounce">
+        <div className="fixed top-20 left-4 right-4 z-40 p-3.5 rounded-2xl bg-white text-slate-900 font-mono text-xs shadow-2xl border border-emerald-200 flex items-center justify-between animate-bounce">
           <span className="font-bold flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
             {toastMessage}
           </span>
-          <span className="text-emerald-400 font-bold">Active</span>
+          <span className="text-emerald-600 font-bold">Active</span>
         </div>
       )}
 
       {/* Watchlist Sub-Header & Dynamic Working Tabs */}
-      <div className="bg-white border-b border-slate-200 px-4 py-3 sticky top-[57px] z-20 shadow-2xs">
+      <div className="bg-white border-b border-slate-200 px-4 py-3">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar flex-1 pr-2">
             {watchlists.map((wl) => (

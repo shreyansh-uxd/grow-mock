@@ -22,7 +22,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
     <div className="pb-20 bg-white min-h-screen">
       
       {/* Sub Header & Tab Selector */}
-      <div className="bg-white border-b border-slate-200 px-4 py-2.5 sticky top-[57px] z-20 flex items-center justify-between">
+      <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between">
         <div className="flex p-1 bg-slate-100 rounded-2xl w-full">
           <button
             onClick={() => setActiveTab("holdings")}

@@ -477,12 +477,12 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
 
         {/* Order Toast Notification */}
         {orderToast && (
-          <div className="absolute top-14 left-4 right-4 z-30 p-3 rounded-2xl bg-slate-900 text-white font-mono text-xs shadow-xl border border-slate-700 flex items-center justify-between animate-bounce">
+          <div className="absolute top-14 left-4 right-4 z-30 p-3 rounded-2xl bg-white text-slate-900 font-mono text-xs shadow-xl border border-emerald-200 flex items-center justify-between animate-bounce">
             <span className="font-bold flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
               {orderToast.type} Order Executed for {orderToast.name}!
             </span>
-            <span className="text-emerald-400 font-bold">1 Qty</span>
+            <span className="text-emerald-600 font-bold">1 Qty</span>
           </div>
         )}
 

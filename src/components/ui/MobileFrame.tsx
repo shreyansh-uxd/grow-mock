@@ -66,7 +66,7 @@ export default function MobileFrame({ children }: MobileFrameProps) {
           </div>
 
           {/* Smooth Scrollable App Screen Content */}
-          <div className="flex-1 relative overflow-y-auto overflow-x-hidden overscroll-contain no-scrollbar bg-white flex flex-col">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden overscroll-contain no-scrollbar bg-white flex flex-col">
             {children}
           </div>
 

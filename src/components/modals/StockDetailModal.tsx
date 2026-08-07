@@ -62,7 +62,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
       {/* Groww Style Bottom Sheet Drawer */}
       <div
         ref={drawerRef}
-        className="relative w-full bg-white rounded-t-[32px] shadow-2xl border-t border-slate-100 z-50 flex flex-col max-h-[92%] h-[92%] overflow-hidden"
+        className="relative w-full bg-white rounded-t-[32px] shadow-2xl border-t border-slate-100 z-50 flex flex-col max-h-[85%] h-[85%] overflow-hidden"
       >
         {/* Top Drag Handle Indicator */}
         <div className="pt-3 pb-1 shrink-0 bg-white">

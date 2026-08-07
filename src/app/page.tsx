@@ -64,7 +64,7 @@ export default function Home() {
 
         {/* 3. Main App Mode */}
         {screenMode === "app" && (
-          <div className="w-full flex-1 flex flex-col relative bg-white">
+          <div className="w-full flex-1 flex flex-col bg-white">
             {/* Sticky Header with Navbar & LightMarketTicker Bar */}
             <div className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs">
               <Navbar

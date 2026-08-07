@@ -19,7 +19,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
   const dayReturns = PORTFOLIO_HOLDINGS.reduce((acc, h) => acc + h.dayReturns, 0);
 
   return (
-    <div className="pb-20 bg-white min-h-screen">
+    <div className="pb-4 bg-white min-h-full">
       
       {/* Sub Header & Tab Selector */}
       <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between">

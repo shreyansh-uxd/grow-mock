@@ -91,7 +91,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
   };
 
   return (
-    <div className="pb-20 bg-white min-h-screen relative">
+    <div className="pb-4 bg-white min-h-full relative">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-20 left-4 right-4 z-40 p-3.5 rounded-2xl bg-white text-slate-900 font-mono text-xs shadow-2xl border border-emerald-200 flex items-center justify-between animate-bounce">

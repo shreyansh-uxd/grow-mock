@@ -58,7 +58,7 @@ export default function MoreView({
   ];
 
   return (
-    <div className="pb-24 relative bg-white min-h-screen">
+    <div className="pb-4 relative bg-white min-h-full">
       
       <div className="p-4 space-y-4 bg-white">
         

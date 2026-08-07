@@ -14,7 +14,7 @@ export default function StocksInNews({ onSelectStock }: StocksInNewsProps) {
   const { stocksInNews } = useStocks();
 
   return (
-    <section className="py-3.5 px-4 pb-24">
+    <section className="py-3.5 px-4 pb-4">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-sm font-bold text-slate-800">Stocks in News</h2>
         <span className="text-[11px] font-bold text-emerald-600 hover:underline cursor-pointer">

@@ -78,7 +78,7 @@ export default function Home() {
             {/* Dynamic View Router with GSAP Page Transitions */}
             <PageTransition activeKey={activeTab} direction={transitionDirection}>
               {activeTab === "stocks" && (
-                <div className="pb-16 bg-white">
+                <div className="pb-4 bg-white">
                   <RecentlyViewed onSelectStock={(stock) => setSelectedStock(stock)} />
                   <MostTraded onSelectStock={(stock) => setSelectedStock(stock)} />
                   <FinancialTools />

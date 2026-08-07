@@ -172,10 +172,11 @@ export default function PageTransition({ activeKey, direction, children }: PageT
   return (
     <div
       ref={containerRef}
-      className="relative flex-1 overflow-x-hidden bg-white"
+      className="relative flex-1 overflow-x-hidden no-scrollbar bg-white"
     >
       <div
         ref={contentRef}
+        className="no-scrollbar"
         style={{ transformOrigin: "center top" }}
       >
         {children}

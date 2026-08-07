@@ -35,7 +35,7 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
           {
             y: 0,
             opacity: 1,
-            color: "#1e293b",
+            color: "#475569",
             duration: 0.4,
             ease: "power3.out",
           }
@@ -62,13 +62,13 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
     { scope: priceRef, dependencies: [stock.price, stock.tickTime] }
   );
 
-  const priceTextSize = size === "large" ? "text-base font-bold" : "text-sm font-bold";
+  const priceTextSize = size === "large" ? "text-base font-semibold" : "text-sm font-semibold";
   const badgeTextSize = size === "large" ? "text-[11px] font-medium" : "text-[10px] font-medium";
 
   return (
     <div className="inline-flex flex-col items-start">
       {/* Refined lighter price typography */}
-      <span ref={priceRef} className={`${priceTextSize} text-slate-800 block tracking-tight font-mono`}>
+      <span ref={priceRef} className={`${priceTextSize} text-slate-600 block tracking-tight font-mono`}>
         ₹{stock.price.toFixed(2)}
       </span>
 

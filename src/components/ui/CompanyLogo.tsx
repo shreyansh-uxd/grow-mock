@@ -12,6 +12,28 @@ export default function CompanyLogo({ symbol, className = "h-10 w-10" }: Company
   const sym = symbol.toUpperCase();
 
   switch (sym) {
+    case "RELIGARE":
+      return (
+        <div className={`${className} flex items-center justify-center shrink-0`}>
+          <img
+            src="/Clip path group.svg"
+            alt="Religare"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      );
+
+    case "GROWW":
+      return (
+        <div className={`${className} flex items-center justify-center shrink-0`}>
+          <img
+            src="/logo.svg"
+            alt="Groww"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      );
+
     case "BLUESTONE":
       return (
         <div className={`${className} rounded-2xl bg-white border border-slate-100/60 flex items-center justify-center p-1 overflow-hidden shrink-0`}>

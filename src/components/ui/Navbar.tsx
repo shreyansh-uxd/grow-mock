@@ -25,19 +25,19 @@ export default function Navbar({ activeTab, onOpenSearch, onOpenProfile }: Navba
       {/* Left Clover Brand & Title */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2.5">
-          {/* Logo sized 1.5x larger (48px / h-12 w-12) */}
-          <div className="h-8 w-8 flex items-center justify-center shrink-0">
+          {/* Logo slightly reduced to h-6 w-6 */}
+          <div className="h-6 w-6 flex items-center justify-center shrink-0">
             <Image
               src="/Clip path group.svg"
-              alt="Groww Logo"
-              width={32}
-              height={32}
-              className="h-8 w-8 object-contain"
+              alt="Religare Logo"
+              width={24}
+              height={24}
+              className="h-6 w-6 object-contain"
               priority
             />
           </div>
           <div className="h-5 w-px bg-slate-200" />
-          <h1 className="text-xl font-extrabold text-slate-700 tracking-tight font-sans">
+          <h1 className="text-xl font-semibold text-slate-600 tracking-tight font-sans">
             {currentTitle}
           </h1>
         </div>
@@ -53,13 +53,17 @@ export default function Navbar({ activeTab, onOpenSearch, onOpenProfile }: Navba
           <Search className="h-5 w-5" />
         </button>
 
-        <div
+        <button
           onClick={onOpenProfile}
-          className="h-9 w-9 rounded-full bg-emerald-800 text-white font-extrabold flex items-center justify-center text-sm shadow-inner cursor-pointer hover:scale-105 transition-transform"
+          className="h-7 w-7 rounded-full overflow-hidden border border-slate-200 shadow-2xs cursor-pointer hover:scale-105 transition-transform shrink-0"
           title="Open Profile"
         >
-          A
-        </div>
+          <img
+            src="/avatar.png"
+            alt="Aditya Sharma"
+            className="w-full h-full object-cover"
+          />
+        </button>
       </div>
     </header>
   );

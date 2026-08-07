@@ -29,55 +29,12 @@ const ONBOARDING_SLIDES = [
     badge: "Fast Execution",
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
     visual: (
-      <div className="w-full h-56 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-emerald-600/10 rounded-3xl border border-emerald-200/60 p-5 flex flex-col justify-between relative overflow-hidden shadow-sm">
-        {/* Decorative Grid Lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00b38610_1px,transparent_1px),linear-gradient(to_bottom,#00b38610_1px,transparent_1px)] bg-[size:16px_16px]" />
-        
-        {/* Top Floating Badge */}
-        <div className="flex items-center justify-between relative z-10">
-          <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-xs">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-mono font-bold text-slate-800">NSE • NIFTY 50</span>
-          </div>
-          <span className="text-xs font-mono font-extrabold text-emerald-600 bg-emerald-100 px-2.5 py-1 rounded-full">
-            +2.45%
-          </span>
-        </div>
-
-        {/* Dynamic Stock Card Visual */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 shadow-md relative z-10 space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center">
-                RE
-              </div>
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">Reliance Industries</h4>
-                <p className="text-[10px] text-slate-400 font-mono">RELIANCE • Equity</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-sm font-extrabold text-slate-900 font-mono block">₹1,420.50</span>
-              <span className="text-[10px] font-bold text-emerald-600 font-mono">+₹85.20 (6.38%)</span>
-            </div>
-          </div>
-
-          {/* Mini Sparkline Bar */}
-          <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden flex gap-0.5 pt-0.5">
-            <div className="h-full bg-emerald-500 rounded-full w-[70%]" />
-            <div className="h-full bg-emerald-300 rounded-full w-[30%]" />
-          </div>
-        </div>
-
-        {/* Bottom Feature Tags */}
-        <div className="flex items-center gap-2 relative z-10">
-          <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100/90 px-2.5 py-1 rounded-lg flex items-center gap-1">
-            <Zap className="h-3 w-3 text-emerald-600" /> Instant Orders
-          </span>
-          <span className="text-[10px] font-mono font-bold text-slate-600 bg-white/80 px-2.5 py-1 rounded-lg border border-slate-200 flex items-center gap-1">
-            <ShieldCheck className="h-3 w-3 text-emerald-600" /> 100% Secure
-          </span>
-        </div>
+      <div className="w-full h-56 rounded-3xl border border-slate-100 overflow-hidden shadow-xs relative bg-slate-50 flex items-center justify-center">
+        <img
+          src="/onboarding-1.png"
+          alt="Zero Commission Stock Trading"
+          className="w-full h-full object-cover"
+        />
       </div>
     ),
   },
@@ -88,49 +45,12 @@ const ONBOARDING_SLIDES = [
     badge: "Real-time Alerts",
     badgeColor: "bg-sky-50 text-sky-700 border-sky-200",
     visual: (
-      <div className="w-full h-56 bg-gradient-to-br from-sky-500/10 via-blue-500/5 to-indigo-600/10 rounded-3xl border border-sky-200/60 p-5 flex flex-col justify-between relative overflow-hidden shadow-sm">
-        {/* Category Tabs Mockup */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar relative z-10">
-          <span className="px-3 py-1 rounded-full bg-emerald-800 text-white text-[11px] font-bold shadow-xs">
-            My Watchlist
-          </span>
-          <span className="px-3 py-1 rounded-full bg-white text-slate-600 border border-slate-200 text-[11px] font-bold">
-            Tech Giants
-          </span>
-          <span className="px-3 py-1 rounded-full bg-white text-slate-600 border border-slate-200 text-[11px] font-bold">
-            EV &amp; Auto
-          </span>
-        </div>
-
-        {/* Notification Alert Visual Box */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3.5 border border-sky-200 shadow-md relative z-10 space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="h-8 w-8 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center">
-                <Bell className="h-4 w-4" />
-              </div>
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">Price Target Triggered!</h4>
-                <p className="text-[10px] text-slate-400">Tata Motors reached ₹368.00</p>
-              </div>
-            </div>
-            <span className="text-[9px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200">
-              Just now
-            </span>
-          </div>
-        </div>
-
-        {/* Stock List Items Preview */}
-        <div className="space-y-1.5 relative z-10">
-          <div className="bg-white/80 rounded-xl p-2 px-3 border border-slate-200/70 flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800">Pine Labs</span>
-            <span className="text-xs font-mono font-bold text-rose-500">₹368.37 (-4.2%)</span>
-          </div>
-          <div className="bg-white/80 rounded-xl p-2 px-3 border border-slate-200/70 flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800">HDFC Bank</span>
-            <span className="text-xs font-mono font-bold text-emerald-600">₹1,842.30 (+2.0%)</span>
-          </div>
-        </div>
+      <div className="w-full h-56 rounded-3xl border border-slate-100 overflow-hidden shadow-xs relative bg-slate-50 flex items-center justify-center">
+        <img
+          src="/onboarding-2.png"
+          alt="Smart Watchlists & Instant Alerts"
+          className="w-full h-full object-cover"
+        />
       </div>
     ),
   },
@@ -141,48 +61,12 @@ const ONBOARDING_SLIDES = [
     badge: "Wealth Builder",
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
     visual: (
-      <div className="w-full h-56 bg-gradient-to-br from-purple-500/10 via-indigo-500/5 to-purple-600/10 rounded-3xl border border-purple-200/60 p-5 flex flex-col justify-between relative overflow-hidden shadow-sm">
-        {/* SIP Header Info */}
-        <div className="flex items-center justify-between relative z-10">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
-              <Calendar className="h-4 w-4" />
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-slate-900">Monthly Stock SIP</h4>
-              <p className="text-[10px] text-slate-400">Automated every 15th</p>
-            </div>
-          </div>
-          <span className="text-xs font-extrabold text-purple-700 font-mono bg-purple-100 px-2.5 py-1 rounded-full">
-            Active
-          </span>
-        </div>
-
-        {/* Compound Returns Card */}
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-purple-200 shadow-md relative z-10 flex items-center justify-between">
-          <div>
-            <span className="text-[10px] font-mono font-bold text-slate-400 block uppercase">
-              Projected 3Y Wealth
-            </span>
-            <span className="text-xl font-extrabold text-slate-900 font-mono">₹24,500.00</span>
-            <span className="text-[10px] font-bold text-emerald-600 block mt-0.5">
-              +18.4% Est. Annual Returns
-            </span>
-          </div>
-          <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
-            <PieChart className="h-6 w-6" />
-          </div>
-        </div>
-
-        {/* Guarantees Tag */}
-        <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-500 relative z-10">
-          <span className="flex items-center gap-1">
-            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" /> Cancel Anytime
-          </span>
-          <span className="flex items-center gap-1">
-            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" /> Zero Extra Charges
-          </span>
-        </div>
+      <div className="w-full h-56 rounded-3xl border border-slate-100 overflow-hidden shadow-xs relative bg-slate-50 flex items-center justify-center">
+        <img
+          src="/onboarding-3.png"
+          alt="Automate Growth with Stock SIPs"
+          className="w-full h-full object-cover"
+        />
       </div>
     ),
   },

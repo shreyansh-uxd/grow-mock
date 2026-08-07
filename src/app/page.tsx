@@ -18,6 +18,7 @@ import SearchModal from "@/components/modals/SearchModal";
 import PageTransition from "@/components/animations/PageTransition";
 import SplashScreen from "@/components/screens/SplashScreen";
 import OnboardingScreen from "@/components/screens/OnboardingScreen";
+import LoginScreen from "@/components/screens/LoginScreen";
 import MobileFrame from "@/components/ui/MobileFrame";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
@@ -26,7 +27,7 @@ import { StockProvider } from "@/context/StockContext";
 const TAB_ORDER = ["stocks", "watchlist", "portfolio", "more"];
 
 export default function Home() {
-  const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "app">("splash");
+  const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "login" | "app">("splash");
   const [activeTab, setActiveTab] = useState("stocks");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -59,10 +60,18 @@ export default function Home() {
 
         {/* 2. Onboarding Screen Mode (3 Interactive Slides) */}
         {screenMode === "onboarding" && (
-          <OnboardingScreen onFinish={() => setScreenMode("app")} />
+          <OnboardingScreen onFinish={() => setScreenMode("login")} />
         )}
 
-        {/* 3. Main App Mode */}
+        {/* 3. Login Screen Mode with Demo Credentials */}
+        {screenMode === "login" && (
+          <LoginScreen
+            onLoginSuccess={() => setScreenMode("app")}
+            onSkip={() => setScreenMode("app")}
+          />
+        )}
+
+        {/* 4. Main App Mode */}
         {screenMode === "app" && (
           <div className="w-full flex-1 flex flex-col bg-white">
             {/* Sticky Header with Navbar & LightMarketTicker Bar */}
@@ -108,6 +117,7 @@ export default function Home() {
                   setProfileDrawerOpen={setProfileDrawerOpen}
                   onReplaySplash={() => setScreenMode("splash")}
                   onReplayOnboarding={() => setScreenMode("onboarding")}
+                  onReplayLogin={() => setScreenMode("login")}
                 />
               )}
             </PageTransition>

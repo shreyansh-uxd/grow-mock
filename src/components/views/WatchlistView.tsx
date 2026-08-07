@@ -113,7 +113,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
                 onClick={() => setActiveTab(wl)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === wl
-                    ? "bg-emerald-800 text-white shadow-sm"
+                    ? "bg-emerald-600 text-white shadow-xs shadow-emerald-600/20"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
               >

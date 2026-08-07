@@ -18,7 +18,7 @@ export default function MostTraded({ onSelectStock }: MostTradedProps) {
 
   return (
     <section className="py-3.5 px-4">
-      <h2 className="text-sm font-bold text-slate-700 mb-3">Most Traded Today</h2>
+      <h2 className="text-sm font-semibold text-slate-500 mb-3">Most Traded Today</h2>
 
       {/* Refined Card Grid with Spacious Padding & Room */}
       <div className="grid grid-cols-2 gap-3.5">
@@ -32,7 +32,7 @@ export default function MostTraded({ onSelectStock }: MostTradedProps) {
             <div className="flex items-center gap-3">
               <CompanyLogo symbol={stock.symbol} className="h-10 w-10 shrink-0" />
               <div className="min-w-0 flex-1">
-                <span className="text-xs font-bold text-slate-700 group-hover:text-emerald-700 transition-colors block truncate">
+                <span className="text-xs font-semibold text-slate-600 group-hover:text-emerald-700 transition-colors block truncate">
                   {stock.name}
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">NSE</span>

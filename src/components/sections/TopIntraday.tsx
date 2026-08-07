@@ -16,7 +16,7 @@ export default function TopIntraday({ onSelectStock }: TopIntradayProps) {
   return (
     <section className="py-3.5 px-4">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-sm font-bold text-slate-700">Top Intraday</h2>
+        <h2 className="text-sm font-semibold text-slate-500">Top Intraday</h2>
         <span className="text-[11px] font-bold text-emerald-600 hover:underline cursor-pointer">
           Screener &gt;
         </span>
@@ -32,7 +32,7 @@ export default function TopIntraday({ onSelectStock }: TopIntradayProps) {
             <div className="flex items-center gap-2.5">
               <CompanyLogo symbol={stock.symbol} className="h-9 w-9" />
               <div className="min-w-0 flex-1">
-                <span className="text-xs font-bold text-slate-700 group-hover:text-emerald-700 transition-colors block truncate">
+                <span className="text-xs font-semibold text-slate-600 group-hover:text-emerald-700 transition-colors block truncate">
                   {stock.name}
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">INTRA</span>

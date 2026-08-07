@@ -23,7 +23,7 @@ export default function TopMovers({ onSelectStock }: TopMoversProps) {
     <section className="py-3.5 px-4">
       {/* Title & Dropdown Filter Header */}
       <div className="flex items-center justify-between mb-2.5">
-        <h2 className="text-sm font-bold text-slate-700">Top Movers</h2>
+        <h2 className="text-sm font-semibold text-slate-500">Top Movers</h2>
 
         <div className="relative">
           <button className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-[11px] font-medium flex items-center gap-1 transition-colors">
@@ -39,7 +39,7 @@ export default function TopMovers({ onSelectStock }: TopMoversProps) {
           onClick={() => setTab("gainers")}
           className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
             tab === "gainers"
-              ? "bg-emerald-800 text-white shadow-sm"
+              ? "bg-emerald-600 text-white shadow-xs shadow-emerald-600/20"
               : "text-slate-600 hover:text-slate-700"
           }`}
         >
@@ -68,7 +68,7 @@ export default function TopMovers({ onSelectStock }: TopMoversProps) {
             <div className="flex items-center gap-2.5">
               <CompanyLogo symbol={stock.symbol} className="h-9 w-9" />
               <div className="min-w-0 flex-1">
-                <span className="text-xs font-bold text-slate-700 group-hover:text-emerald-700 transition-colors block truncate">
+                <span className="text-xs font-semibold text-slate-600 group-hover:text-emerald-700 transition-colors block truncate">
                   {stock.name}
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">NSE</span>

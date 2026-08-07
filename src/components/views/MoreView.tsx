@@ -11,6 +11,7 @@ interface MoreViewProps {
   setProfileDrawerOpen: (open: boolean) => void;
   onReplaySplash?: () => void;
   onReplayOnboarding?: () => void;
+  onReplayLogin?: () => void;
 }
 
 export default function MoreView({
@@ -19,6 +20,7 @@ export default function MoreView({
   setProfileDrawerOpen,
   onReplaySplash,
   onReplayOnboarding,
+  onReplayLogin,
 }: MoreViewProps) {
   const [walletBalance, setWalletBalance] = useState(12450.00);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -68,8 +70,8 @@ export default function MoreView({
           className="groww-card p-4 flex items-center justify-between cursor-pointer hover:border-emerald-500 transition-all group"
         >
           <div className="flex items-center gap-3.5">
-            <div className="h-12 w-12 rounded-2xl bg-emerald-800 text-white font-extrabold text-lg flex items-center justify-center shadow-sm">
-              A
+            <div className="h-11 w-11 rounded-2xl overflow-hidden border border-slate-200 shadow-2xs shrink-0">
+              <img src="/avatar.png" alt="Aditya Sharma" className="w-full h-full object-cover" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -131,25 +133,35 @@ export default function MoreView({
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">
             App Demos &amp; Experience
           </h3>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-2">
             <button
               onClick={onReplaySplash}
-              className="groww-card p-3.5 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
+              className="groww-card p-3 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
             >
-              <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">
-                View Splash Screen
+              <span className="text-[11px] font-bold text-slate-900 group-hover:text-emerald-700 leading-tight">
+                Splash Screen
               </span>
-              <span className="text-[10px] text-slate-400 font-mono">Replay brand logo intro</span>
+              <span className="text-[9px] text-slate-400 font-mono">Logo Intro</span>
             </button>
 
             <button
               onClick={onReplayOnboarding}
-              className="groww-card p-3.5 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
+              className="groww-card p-3 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
             >
-              <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">
-                View 3 Onboarding Slides
+              <span className="text-[11px] font-bold text-slate-900 group-hover:text-emerald-700 leading-tight">
+                Onboarding
               </span>
-              <span className="text-[10px] text-slate-400 font-mono">Replay feature tutorial</span>
+              <span className="text-[9px] text-slate-400 font-mono">3 Slides</span>
+            </button>
+
+            <button
+              onClick={onReplayLogin}
+              className="groww-card p-3 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group bg-emerald-50/40 border-emerald-200/80"
+            >
+              <span className="text-[11px] font-bold text-emerald-800 group-hover:text-emerald-600 leading-tight flex items-center gap-0.5">
+                Login Page
+              </span>
+              <span className="text-[9px] text-emerald-600 font-mono font-semibold">Demo Credentials</span>
             </button>
           </div>
         </div>

@@ -26,7 +26,7 @@ export default function RecentlyViewed({ onSelectStock }: RecentlyViewedProps) {
       {/* Header with Slider Navigation Controls */}
       <div className="flex items-center justify-between px-4 mb-3">
         <div className="flex items-center gap-2">
-          <h2 className="text-sm font-bold text-slate-700">Recently Viewed</h2>
+          <h2 className="text-sm font-semibold text-slate-500">Recently Viewed</h2>
         </div>
 
         {/* Carousel Prev/Next Buttons */}
@@ -77,7 +77,7 @@ export default function RecentlyViewed({ onSelectStock }: RecentlyViewedProps) {
               </div>
 
               {/* Company Name */}
-              <span className="text-[11px] font-bold text-slate-700 uppercase tracking-tight group-hover:text-emerald-600 transition-colors truncate max-w-full">
+              <span className="text-[11px] font-semibold text-slate-600 uppercase tracking-tight group-hover:text-emerald-600 transition-colors truncate max-w-full">
                 {stock.name}
               </span>
 

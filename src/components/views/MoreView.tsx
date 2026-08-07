@@ -9,9 +9,17 @@ interface MoreViewProps {
   onOpenProfile: () => void;
   profileDrawerOpen: boolean;
   setProfileDrawerOpen: (open: boolean) => void;
+  onReplaySplash?: () => void;
+  onReplayOnboarding?: () => void;
 }
 
-export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileDrawerOpen }: MoreViewProps) {
+export default function MoreView({
+  onOpenProfile,
+  profileDrawerOpen,
+  setProfileDrawerOpen,
+  onReplaySplash,
+  onReplayOnboarding,
+}: MoreViewProps) {
   const [walletBalance, setWalletBalance] = useState(12450.00);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -59,20 +67,18 @@ export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileD
           onClick={() => setProfileDrawerOpen(true)}
           className="groww-card p-4 flex items-center justify-between cursor-pointer hover:border-emerald-500 transition-all group"
         >
-          <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-2xl bg-emerald-800 text-white font-extrabold text-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-              {isLoggedOut ? "?" : "A"}
+          <div className="flex items-center gap-3.5">
+            <div className="h-12 w-12 rounded-2xl bg-emerald-800 text-white font-extrabold text-lg flex items-center justify-center shadow-sm">
+              A
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <h2 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-                  {isLoggedOut ? "Logged Out" : "Aditya Sharma"}
+                <h2 className="text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  {isLoggedOut ? "Guest User" : "Aditya Sharma"}
                 </h2>
-                {!isLoggedOut && <ShieldCheck className="h-4 w-4 text-emerald-600" />}
+                <Edit3 className="h-3 w-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <span className="text-xs text-slate-400 font-mono">
-                {isLoggedOut ? "Tap to log in" : "Demat: 1208160049281045"}
-              </span>
+              <p className="text-[10px] text-slate-400 font-mono">BO ID: 1208160049281045</p>
             </div>
           </div>
 
@@ -120,6 +126,34 @@ export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileD
           </div>
         </div>
 
+        {/* App Demo & Replay Screens Section */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">
+            App Demos &amp; Experience
+          </h3>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              onClick={onReplaySplash}
+              className="groww-card p-3.5 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
+            >
+              <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">
+                View Splash Screen
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono">Replay brand logo intro</span>
+            </button>
+
+            <button
+              onClick={onReplayOnboarding}
+              className="groww-card p-3.5 flex flex-col justify-between h-20 cursor-pointer hover:border-emerald-500 transition-all text-left group"
+            >
+              <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">
+                View 3 Onboarding Slides
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono">Replay feature tutorial</span>
+            </button>
+          </div>
+        </div>
+
         {/* Groww Products */}
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">Groww Products</h3>
@@ -130,14 +164,14 @@ export default function MoreView({ onOpenProfile, profileDrawerOpen, setProfileD
                 className="groww-card p-3.5 flex flex-col justify-between h-24 cursor-pointer hover:border-emerald-500 transition-all"
               >
                 <div className="flex items-center justify-between">
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold ${p.color}`}>
-                    NEW
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${p.color}`}>
+                    {p.name}
                   </span>
-                  <ChevronRight className="h-4 w-4 text-slate-400" />
+                  <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">{p.name}</h4>
-                  <span className="text-[10px] text-slate-400">{p.desc}</span>
+                  <h4 className="text-xs font-bold text-slate-800">{p.name}</h4>
+                  <p className="text-[10px] text-slate-400 font-mono">{p.desc}</p>
                 </div>
               </div>
             ))}

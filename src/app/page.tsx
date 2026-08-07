@@ -16,6 +16,8 @@ import BottomNav from "@/components/ui/BottomNav";
 import StockDetailModal from "@/components/modals/StockDetailModal";
 import SearchModal from "@/components/modals/SearchModal";
 import PageTransition from "@/components/animations/PageTransition";
+import SplashScreen from "@/components/screens/SplashScreen";
+import OnboardingScreen from "@/components/screens/OnboardingScreen";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
 
@@ -23,6 +25,7 @@ import { StockProvider } from "@/context/StockContext";
 const TAB_ORDER = ["stocks", "watchlist", "portfolio", "more"];
 
 export default function Home() {
+  const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "app">("splash");
   const [activeTab, setActiveTab] = useState("stocks");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -47,6 +50,17 @@ export default function Home() {
 
   return (
     <StockProvider>
+      {/* 1. Splash Screen Mode */}
+      {screenMode === "splash" && (
+        <SplashScreen onComplete={() => setScreenMode("onboarding")} />
+      )}
+
+      {/* 2. Onboarding Screen Mode (3 Interactive Slides) */}
+      {screenMode === "onboarding" && (
+        <OnboardingScreen onFinish={() => setScreenMode("app")} />
+      )}
+
+      {/* 3. Main App Mode */}
       <div className="min-h-screen bg-white text-slate-900">
         <div className="max-w-md mx-auto min-h-screen bg-white shadow-xl relative border-x border-slate-100 flex flex-col">
           
@@ -92,6 +106,8 @@ export default function Home() {
                 onOpenProfile={() => setProfileDrawerOpen(true)}
                 profileDrawerOpen={profileDrawerOpen}
                 setProfileDrawerOpen={setProfileDrawerOpen}
+                onReplaySplash={() => setScreenMode("splash")}
+                onReplayOnboarding={() => setScreenMode("onboarding")}
               />
             )}
           </PageTransition>

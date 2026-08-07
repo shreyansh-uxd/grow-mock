@@ -231,7 +231,7 @@ export default function MoreView({
 
       {/* Profile & Logout Bottom Drawer */}
       {profileDrawerOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/60 backdrop-blur-sm">
+        <div className="absolute inset-0 z-50 flex items-end justify-center bg-slate-900/50 backdrop-blur-xs">
           {/* Backdrop Click to Close */}
           <div className="absolute inset-0" onClick={() => setProfileDrawerOpen(false)} />
 

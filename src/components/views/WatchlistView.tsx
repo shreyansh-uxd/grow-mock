@@ -189,7 +189,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
 
       {/* Groww Style Create Watchlist Bottom Sheet Drawer */}
       {isDrawerOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-end justify-center bg-slate-900/60 backdrop-blur-xs">
+        <div className="absolute inset-0 z-50 flex items-end justify-center bg-slate-900/50 backdrop-blur-xs">
           {/* Backdrop click to close */}
           <div className="absolute inset-0" onClick={() => setIsDrawerOpen(false)} />
 

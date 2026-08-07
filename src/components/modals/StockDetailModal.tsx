@@ -55,14 +55,14 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
   const high52w = (stock.high52w || stock.price * 1.15).toFixed(2);
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-end justify-center bg-slate-900/60 backdrop-blur-sm">
+    <div className="absolute inset-0 z-50 flex items-end justify-center bg-slate-900/50 backdrop-blur-xs overflow-hidden">
       {/* Backdrop click to close */}
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* Groww Style Bottom Sheet Drawer */}
       <div
         ref={drawerRef}
-        className="relative w-full max-w-md bg-white rounded-t-[32px] shadow-2xl border-t border-slate-100 z-[10000] flex flex-col max-h-[94vh] overflow-hidden"
+        className="relative w-full bg-white rounded-t-[32px] shadow-2xl border-t border-slate-100 z-50 flex flex-col max-h-[92%] h-[92%] overflow-hidden"
       >
         {/* Top Drag Handle Indicator */}
         <div className="pt-3 pb-1 shrink-0 bg-white">

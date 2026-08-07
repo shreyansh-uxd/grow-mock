@@ -37,7 +37,7 @@ export default function SearchModal({ isOpen, onClose, onSelectStock }: SearchMo
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div className="absolute inset-0 z-50 flex items-start justify-center pt-10 p-4 bg-slate-900/50 backdrop-blur-xs">
       <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 animate-in fade-in duration-200">
         
         {/* Search Input Bar */}

@@ -159,7 +159,7 @@ export default function FinancialTools() {
 
       {/* Tool Drawer Modal */}
       {activeTool && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
           <div className="w-full max-w-sm bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-extrabold text-slate-900">

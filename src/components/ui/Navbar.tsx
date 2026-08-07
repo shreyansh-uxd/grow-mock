@@ -26,13 +26,13 @@ export default function Navbar({ activeTab, onOpenSearch, onOpenProfile }: Navba
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2.5">
           {/* Logo sized 1.5x larger (48px / h-12 w-12) */}
-          <div className="h-12 w-12 flex items-center justify-center shrink-0">
+          <div className="h-8 w-8 flex items-center justify-center shrink-0">
             <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={48}
-              height={48}
-              className="h-12 w-12 object-contain"
+              src="/Clip path group.svg"
+              alt="Groww Logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
               priority
             />
           </div>

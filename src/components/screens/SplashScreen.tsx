@@ -87,7 +87,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             className="relative h-24 w-24 rounded-3xl bg-white border border-emerald-100 shadow-xl flex items-center justify-center p-3"
           >
             <Image
-              src="/logo.svg"
+              src="/Clip path group.svg"
               alt="Groww Logo"
               width={80}
               height={80}

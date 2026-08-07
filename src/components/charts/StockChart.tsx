@@ -75,7 +75,7 @@ export default function StockChart({ timeline, isPositive, basePrice }: StockCha
                 return (
                   <div className="bg-white text-slate-900 font-mono text-xs p-2.5 rounded-xl shadow-lg border border-slate-200">
                     <div className="text-slate-400 text-[10px]">{item.time}</div>
-                    <div className={`font-extrabold text-sm ${isPositive ? "text-emerald-600" : "text-rose-500"}`}>${item.price.toFixed(2)}</div>
+                    <div className={`font-extrabold text-sm ${isPositive ? "text-emerald-600" : "text-rose-500"}`}>₹{item.price.toFixed(2)}</div>
                   </div>
                 );
               }

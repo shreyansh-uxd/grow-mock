@@ -57,8 +57,8 @@ const ONBOARDING_SLIDES = [
               </div>
             </div>
             <div className="text-right">
-              <span className="text-sm font-extrabold text-slate-900 font-mono block">$1,420.50</span>
-              <span className="text-[10px] font-bold text-emerald-600 font-mono">+$85.20 (6.38%)</span>
+              <span className="text-sm font-extrabold text-slate-900 font-mono block">₹1,420.50</span>
+              <span className="text-[10px] font-bold text-emerald-600 font-mono">+₹85.20 (6.38%)</span>
             </div>
           </div>
 
@@ -111,7 +111,7 @@ const ONBOARDING_SLIDES = [
               </div>
               <div>
                 <h4 className="text-xs font-bold text-slate-900">Price Target Triggered!</h4>
-                <p className="text-[10px] text-slate-400">Tata Motors reached $368.00</p>
+                <p className="text-[10px] text-slate-400">Tata Motors reached ₹368.00</p>
               </div>
             </div>
             <span className="text-[9px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200">
@@ -124,11 +124,11 @@ const ONBOARDING_SLIDES = [
         <div className="space-y-1.5 relative z-10">
           <div className="bg-white/80 rounded-xl p-2 px-3 border border-slate-200/70 flex items-center justify-between">
             <span className="text-xs font-bold text-slate-800">Pine Labs</span>
-            <span className="text-xs font-mono font-bold text-rose-500">$368.37 (-4.2%)</span>
+            <span className="text-xs font-mono font-bold text-rose-500">₹368.37 (-4.2%)</span>
           </div>
           <div className="bg-white/80 rounded-xl p-2 px-3 border border-slate-200/70 flex items-center justify-between">
             <span className="text-xs font-bold text-slate-800">HDFC Bank</span>
-            <span className="text-xs font-mono font-bold text-emerald-600">$1,842.30 (+2.0%)</span>
+            <span className="text-xs font-mono font-bold text-emerald-600">₹1,842.30 (+2.0%)</span>
           </div>
         </div>
       </div>
@@ -164,7 +164,7 @@ const ONBOARDING_SLIDES = [
             <span className="text-[10px] font-mono font-bold text-slate-400 block uppercase">
               Projected 3Y Wealth
             </span>
-            <span className="text-xl font-extrabold text-slate-900 font-mono">$24,500.00</span>
+            <span className="text-xl font-extrabold text-slate-900 font-mono">₹24,500.00</span>
             <span className="text-[10px] font-bold text-emerald-600 block mt-0.5">
               +18.4% Est. Annual Returns
             </span>

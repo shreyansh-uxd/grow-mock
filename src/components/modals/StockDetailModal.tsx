@@ -75,7 +75,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
             <CompanyLogo symbol={stock.symbol} className="h-10 w-10" />
             <div>
               <h2 className="text-base font-bold text-slate-900 leading-tight">{stock.name}</h2>
-              <span className="text-[10px] text-slate-400 font-mono">NASDAQ • {stock.symbol}</span>
+              <span className="text-[10px] text-slate-400 font-mono">NSE • {stock.symbol}</span>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
           <div className="flex items-start justify-between">
             <div>
               <span className="text-2xl font-extrabold text-slate-900 font-mono tracking-tight block">
-                ${stock.price.toFixed(2)}
+                ₹{stock.price.toFixed(2)}
               </span>
               <div className="flex items-center gap-1.5 mt-0.5 font-mono text-xs font-semibold">
                 <span className={isPositive ? "text-emerald-600" : "text-rose-500"}>
@@ -151,7 +151,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
             {/* Timeline Selector Bar + Chart Toggle */}
             <div className="flex items-center justify-between pt-3">
               <div className="flex items-center gap-1">
-                <span className="text-xs font-bold text-emerald-600 mr-1.5 font-mono">NASDAQ</span>
+                <span className="text-xs font-bold text-emerald-600 mr-1.5 font-mono">NSE</span>
                 {TIMELINES.map((t) => (
                   <button
                     key={t}
@@ -224,8 +224,8 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                   {/* Today's Low / High Range */}
                   <div className="space-y-1.5 font-mono">
                     <div className="flex justify-between text-[11px]">
-                      <span className="text-slate-400">Today&apos;s Low <strong className="text-slate-800">${dayLow}</strong></span>
-                      <span className="text-slate-400">Today&apos;s High <strong className="text-slate-800">${dayHigh}</strong></span>
+                      <span className="text-slate-400">Today&apos;s Low <strong className="text-slate-800">₹{dayLow}</strong></span>
+                      <span className="text-slate-400">Today&apos;s High <strong className="text-slate-800">₹{dayHigh}</strong></span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-slate-200 relative overflow-hidden">
                       <div className="h-full bg-emerald-500 rounded-full" style={{ width: "65%" }} />
@@ -235,8 +235,8 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                   {/* 52W Low / High Range */}
                   <div className="space-y-1.5 font-mono pt-1">
                     <div className="flex justify-between text-[11px]">
-                      <span className="text-slate-400">52W Low <strong className="text-rose-500">${low52w}</strong></span>
-                      <span className="text-slate-400">52W High <strong className="text-emerald-600">${high52w}</strong></span>
+                      <span className="text-slate-400">52W Low <strong className="text-rose-500">₹{low52w}</strong></span>
+                      <span className="text-slate-400">52W High <strong className="text-emerald-600">₹{high52w}</strong></span>
                     </div>
                     <div className="h-2 w-full rounded-full bg-slate-200 relative overflow-hidden">
                       <div className="h-full bg-emerald-500 rounded-full" style={{ width: "80%" }} />
@@ -247,11 +247,11 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                   <div className="grid grid-cols-2 gap-4 pt-2 border-t border-slate-200/60 font-mono text-[11px]">
                     <div className="flex justify-between">
                       <span className="text-slate-400">Open</span>
-                      <span className="font-bold text-slate-800">${(stock.price * 0.985).toFixed(2)}</span>
+                      <span className="font-bold text-slate-800">₹{(stock.price * 0.985).toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-400">Prev. Close</span>
-                      <span className="font-bold text-slate-800">${(stock.price * 0.975).toFixed(2)}</span>
+                      <span className="font-bold text-slate-800">₹{(stock.price * 0.975).toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-400">Volume</span>
@@ -259,7 +259,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-400">Lower Circuit</span>
-                      <span className="font-bold text-rose-500">${(stock.price * 0.90).toFixed(2)}</span>
+                      <span className="font-bold text-rose-500">₹{(stock.price * 0.90).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                     <div className="grid grid-cols-2 gap-4 py-2">
                       <div className="flex justify-between pr-2 border-r border-slate-200/60">
                         <span className="text-slate-400">Market Cap</span>
-                        <span className="font-bold text-slate-900">{stock.marketCap || "$14.25B"}</span>
+                        <span className="font-bold text-slate-900">{stock.marketCap || "₹14.25B"}</span>
                       </div>
                       <div className="flex justify-between pl-2">
                         <span className="text-slate-400">P/E Ratio</span>
@@ -300,7 +300,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                       </div>
                       <div className="flex justify-between pl-2">
                         <span className="text-slate-400">EPS (TTM)</span>
-                        <span className="font-bold text-slate-900">$19.50</span>
+                        <span className="font-bold text-slate-900">₹19.50</span>
                       </div>
                     </div>
 
@@ -311,7 +311,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                       </div>
                       <div className="flex justify-between pl-2">
                         <span className="text-slate-400">Book Value</span>
-                        <span className="font-bold text-slate-900">$115.20</span>
+                        <span className="font-bold text-slate-900">₹115.20</span>
                       </div>
                     </div>
                   </div>
@@ -386,7 +386,7 @@ export default function StockDetailModal({ stock, onClose }: StockDetailModalPro
                           <div key={idx} className="flex flex-col items-center gap-1.5 h-full justify-end group relative">
                             {/* Value Label Neatly Above Bar */}
                             <span className="text-[10px] font-mono font-bold text-slate-600 whitespace-nowrap bg-white px-1.5 py-0.5 rounded-md border border-slate-200/60 shadow-2xs">
-                              ${val}M
+                              ₹{val}Cr
                             </span>
 
                             {/* Rounded Bar */}

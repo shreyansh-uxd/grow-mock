@@ -69,7 +69,7 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
     <div className="inline-flex flex-col items-start">
       {/* Refined lighter price typography */}
       <span ref={priceRef} className={`${priceTextSize} text-slate-800 block tracking-tight font-mono`}>
-        ${stock.price.toFixed(2)}
+        ₹{stock.price.toFixed(2)}
       </span>
 
 

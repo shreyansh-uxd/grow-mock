@@ -62,7 +62,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
           <div>
             <CountUpNumber
               value={totalCurrent}
-              prefix="$"
+              prefix="₹"
               className="text-3xl font-extrabold text-slate-700 tracking-tight font-mono block"
             />
             <div className="flex items-center gap-2 mt-1">
@@ -70,7 +70,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
                 <ArrowUpRight className="h-4 w-4 shrink-0" />
                 <CountUpNumber
                   value={totalReturns}
-                  prefix="+$"
+                  prefix="+₹"
                   suffix={` (${totalReturnsPercent.toFixed(2)}%)`}
                 />
               </span>
@@ -84,7 +84,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
               <span className="text-slate-400 block text-[10px] uppercase">Invested Amount</span>
               <CountUpNumber
                 value={totalInvested}
-                prefix="$"
+                prefix="₹"
                 className="font-extrabold text-slate-700 block"
               />
             </div>
@@ -92,7 +92,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
               <span className="text-slate-400 block text-[10px] uppercase">1D Returns</span>
               <CountUpNumber
                 value={dayReturns}
-                prefix="+$"
+                prefix="+₹"
                 className="font-extrabold text-emerald-600 block"
               />
             </div>
@@ -143,17 +143,17 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
                     <div>
                       <h3 className="text-sm font-bold text-slate-700">{h.name}</h3>
                       <span className="text-[11px] text-slate-400 font-mono">
-                        {h.quantity} Qty • Avg ${h.avgPrice.toFixed(2)}
+                        {h.quantity} Qty • Avg ₹{h.avgPrice.toFixed(2)}
                       </span>
                     </div>
                   </div>
 
                   <div className="text-right font-mono">
                     <span className="text-sm font-extrabold text-slate-700 block">
-                      ${h.currentValue.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                      ₹{h.currentValue.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
                     </span>
-                    <span className="text-xs font-semibold text-emerald-600">
-                      +${h.totalReturns.toFixed(2)} ({h.totalReturnsPercent.toFixed(2)}%)
+                    <span className={`text-xs font-semibold ${h.totalReturns >= 0 ? "text-emerald-600" : "text-rose-500"}`}>
+                      {h.totalReturns >= 0 ? `+₹${h.totalReturns.toFixed(2)}` : `-₹${Math.abs(h.totalReturns).toFixed(2)}`} ({h.totalReturnsPercent.toFixed(2)}%)
                     </span>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
                 {/* Day Return Bar */}
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
                   <span>Day&apos;s Return</span>
-                  <span className="font-bold text-emerald-600">+$126.50 (+8.15%)</span>
+                  <span className="font-bold text-emerald-600">+₹126.50 (+8.15%)</span>
                 </div>
               </div>
             ))}
@@ -184,7 +184,7 @@ export default function PortfolioView({ onSelectStock }: PortfolioViewProps) {
 
                 <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs font-mono">
                   <span className="text-slate-500">Monthly Amount</span>
-                  <span className="font-bold text-slate-700">${sip.monthlyAmount.toLocaleString()}</span>
+                  <span className="font-bold text-slate-700">₹{sip.monthlyAmount.toLocaleString("en-IN")}</span>
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-mono text-slate-500">

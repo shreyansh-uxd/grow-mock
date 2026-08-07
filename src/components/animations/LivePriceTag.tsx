@@ -73,11 +73,11 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
       </span>
 
 
-      {/* Refined percentage badge */}
+      {/* Refined percentage tag - clean number without outline or background box */}
       <span
         ref={badgeRef}
-        className={`${badgeTextSize} inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md font-mono ${
-          stock.isPositive ? "text-emerald-600 bg-emerald-50/70" : "text-rose-600 bg-rose-50/70"
+        className={`${badgeTextSize} inline-flex items-center gap-0.5 font-mono ${
+          stock.isPositive ? "text-emerald-600" : "text-rose-600"
         }`}
       >
         {stock.isPositive ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}

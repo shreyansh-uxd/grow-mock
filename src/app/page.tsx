@@ -61,74 +61,75 @@ export default function Home() {
       )}
 
       {/* 3. Main App Mode */}
-      <div className="min-h-screen bg-white text-slate-900">
-        <div className="max-w-md mx-auto min-h-screen bg-white shadow-xl relative border-x border-slate-100 flex flex-col">
-          
-          {/* Sticky Header with Navbar & Groww Light Mode Ticker Bar */}
-          <div className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs">
-            <Navbar
-              activeTab={activeTab}
-              onOpenSearch={() => setSearchOpen(true)}
-              onOpenProfile={() => setProfileDrawerOpen(true)}
-            />
-            {/* Groww Light Mode Market Indices Bar */}
-            <LightMarketTicker />
-          </div>
-
-          {/* Dynamic View Router with GSAP Page Transitions */}
-          <PageTransition activeKey={activeTab} direction={transitionDirection}>
-            {activeTab === "stocks" && (
-              <div className="pb-16 bg-white">
-                <RecentlyViewed onSelectStock={(stock) => setSelectedStock(stock)} />
-                <MostTraded onSelectStock={(stock) => setSelectedStock(stock)} />
-                <FinancialTools />
-                <TopMovers onSelectStock={(stock) => setSelectedStock(stock)} />
-                <TopIntraday onSelectStock={(stock) => setSelectedStock(stock)} />
-                <StocksInNews onSelectStock={(stock) => setSelectedStock(stock)} />
-              </div>
-            )}
-
-            {activeTab === "watchlist" && (
-              <WatchlistView
-                onSelectStock={(stock) => setSelectedStock(stock)}
+      {screenMode === "app" && (
+        <div className="min-h-screen bg-white text-slate-900">
+          <div className="max-w-md mx-auto min-h-screen bg-white shadow-xl relative border-x border-slate-100 flex flex-col">
+            
+            {/* Sticky Header with Navbar & LightMarketTicker Bar */}
+            <div className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs">
+              <Navbar
+                activeTab={activeTab}
                 onOpenSearch={() => setSearchOpen(true)}
-              />
-            )}
-
-            {activeTab === "portfolio" && (
-              <PortfolioView
-                onSelectStock={(stock) => setSelectedStock(stock)}
-              />
-            )}
-
-            {activeTab === "more" && (
-              <MoreView
                 onOpenProfile={() => setProfileDrawerOpen(true)}
-                profileDrawerOpen={profileDrawerOpen}
-                setProfileDrawerOpen={setProfileDrawerOpen}
-                onReplaySplash={() => setScreenMode("splash")}
-                onReplayOnboarding={() => setScreenMode("onboarding")}
               />
-            )}
-          </PageTransition>
+              <LightMarketTicker />
+            </div>
 
-          {/* Bottom Navigation */}
-          <BottomNav activeTab={activeTab} setActiveTab={handleTabChange} />
+            {/* Dynamic View Router with GSAP Page Transitions */}
+            <PageTransition activeKey={activeTab} direction={transitionDirection}>
+              {activeTab === "stocks" && (
+                <div className="pb-16 bg-white">
+                  <RecentlyViewed onSelectStock={(stock) => setSelectedStock(stock)} />
+                  <MostTraded onSelectStock={(stock) => setSelectedStock(stock)} />
+                  <FinancialTools />
+                  <TopMovers onSelectStock={(stock) => setSelectedStock(stock)} />
+                  <TopIntraday onSelectStock={(stock) => setSelectedStock(stock)} />
+                  <StocksInNews onSelectStock={(stock) => setSelectedStock(stock)} />
+                </div>
+              )}
 
-          {/* Stock Detail Modal */}
-          <StockDetailModal
-            stock={selectedStock}
-            onClose={() => setSelectedStock(null)}
-          />
+              {activeTab === "watchlist" && (
+                <WatchlistView
+                  onSelectStock={(stock) => setSelectedStock(stock)}
+                  onOpenSearch={() => setSearchOpen(true)}
+                />
+              )}
 
-          {/* Search Modal */}
-          <SearchModal
-            isOpen={searchOpen}
-            onClose={() => setSearchOpen(false)}
-            onSelectStock={(stock) => setSelectedStock(stock)}
-          />
+              {activeTab === "portfolio" && (
+                <PortfolioView
+                  onSelectStock={(stock) => setSelectedStock(stock)}
+                />
+              )}
+
+              {activeTab === "more" && (
+                <MoreView
+                  onOpenProfile={() => setProfileDrawerOpen(true)}
+                  profileDrawerOpen={profileDrawerOpen}
+                  setProfileDrawerOpen={setProfileDrawerOpen}
+                  onReplaySplash={() => setScreenMode("splash")}
+                  onReplayOnboarding={() => setScreenMode("onboarding")}
+                />
+              )}
+            </PageTransition>
+
+            {/* Bottom Navigation */}
+            <BottomNav activeTab={activeTab} setActiveTab={handleTabChange} />
+
+            {/* Stock Detail Modal */}
+            <StockDetailModal
+              stock={selectedStock}
+              onClose={() => setSelectedStock(null)}
+            />
+
+            {/* Search Modal */}
+            <SearchModal
+              isOpen={searchOpen}
+              onClose={() => setSearchOpen(false)}
+              onSelectStock={(stock) => setSelectedStock(stock)}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </StockProvider>
   );
 }

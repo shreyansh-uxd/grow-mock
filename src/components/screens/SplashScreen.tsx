@@ -16,19 +16,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
   useEffect(() => {
     const tl = gsap.timeline({
-      onComplete: () => {
-        if (containerRef.current) {
-          gsap.to(containerRef.current, {
-            opacity: 0,
-            scale: 0.98,
-            duration: 0.25,
-            ease: "power2.inOut",
-            onComplete,
-          });
-        } else {
-          onComplete();
-        }
-      },
+      onComplete,
     });
 
     // Fast, minimal entrance animation (0.3s)

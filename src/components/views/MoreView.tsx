@@ -44,7 +44,7 @@ export default function MoreView({
   };
 
   const handleLogout = () => {
-    if (confirm("Are you sure you want to log out of your Groww account?")) {
+    if (confirm("Are you sure you want to log out of your Religare account?")) {
       setIsLoggedOut(true);
       setProfileDrawerOpen(false);
     }
@@ -95,7 +95,7 @@ export default function MoreView({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Wallet className="h-5 w-5 text-emerald-600" />
-              <span className="text-xs font-mono text-slate-500">GROWW BALANCE</span>
+              <span className="text-xs font-mono text-slate-500">RELIGARE BALANCE</span>
             </div>
             <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-mono border border-emerald-200">
               Instant Withdrawal
@@ -154,9 +154,9 @@ export default function MoreView({
           </div>
         </div>
 
-        {/* Groww Products */}
+        {/* Religare Products */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">Groww Products</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-1">Religare Products</h3>
           <div className="grid grid-cols-2 gap-3">
             {PRODUCTS.map((p) => (
               <div

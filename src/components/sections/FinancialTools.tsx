@@ -175,7 +175,7 @@ export default function FinancialTools() {
             <p className="text-xs text-slate-600 leading-relaxed">
               Explore advanced market analytics, margin trading facility
               (MTF), automated SIP calculators, and tax reporting tools
-              built directly into Groww.
+              built directly into Religare.
             </p>
             <button
               onClick={() => setActiveTool(null)}

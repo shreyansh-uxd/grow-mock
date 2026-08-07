@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Groww Stocks | Clean Financial Trading Platform",
+  title: "Religare Broking | Financial Stock Trading Platform",
   description: "A clean, high-performance financial stock trading platform featuring real-time tickers, top gainers, intraday tools, and interactive stock charts.",
 };
 

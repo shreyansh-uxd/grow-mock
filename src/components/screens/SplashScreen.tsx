@@ -17,12 +17,11 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        // Exit fade out before calling onComplete
         if (containerRef.current) {
           gsap.to(containerRef.current, {
             opacity: 0,
-            scale: 1.05,
-            duration: 0.4,
+            scale: 0.98,
+            duration: 0.25,
             ease: "power2.inOut",
             onComplete,
           });
@@ -32,91 +31,81 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       },
     });
 
-    // Logo entrance animation with spring bounce
+    // Fast, minimal entrance animation (0.3s)
     tl.fromTo(
       logoRef.current,
-      { scale: 0, opacity: 0, rotate: -45 },
-      { scale: 1, opacity: 1, rotate: 0, duration: 0.7, ease: "back.out(1.8)" }
+      { scale: 0.7, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.5)" }
     );
 
-    // Subtle breathing pulse glow
-    tl.to(logoRef.current, {
-      scale: 1.08,
-      duration: 0.5,
-      yoyo: true,
-      repeat: 1,
-      ease: "sine.inOut",
-    });
-
-    // Text reveal
+    // Text reveal (0.25s)
     tl.fromTo(
       textRef.current,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
-      "-=0.4"
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" },
+      "-=0.2"
     );
 
-    // Progress bar fill
+    // Fast snappy progress bar (0.45s)
     tl.fromTo(
       progressRef.current,
       { width: "0%" },
-      { width: "100%", duration: 1.1, ease: "power1.inOut" },
-      "-=0.3"
+      { width: "100%", duration: 0.45, ease: "power2.inOut" },
+      "-=0.2"
     );
   }, [onComplete]);
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-between p-8 select-none"
+      className="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-between p-6 select-none max-w-md mx-auto"
     >
-      {/* Top Decor Spacer */}
-      <div className="w-full pt-6 flex justify-end">
+      {/* Top Header Version Badge */}
+      <div className="w-full pt-4 flex justify-end">
         <span className="text-[10px] font-mono font-bold text-slate-300 uppercase tracking-widest">
-          v2.4 • Groww
+          v2.4 • Religare
         </span>
       </div>
 
-      {/* Main Center Branding */}
+      {/* Center Branding */}
       <div className="flex flex-col items-center text-center my-auto">
-        {/* Animated Clover Logo with Pulse Ring */}
-        <div className="relative mb-6">
-          <div className="absolute inset-0 rounded-full bg-emerald-400/20 blur-xl animate-pulse scale-150" />
+        <div className="relative mb-4">
+          <div className="absolute inset-0 rounded-full bg-emerald-400/20 blur-lg animate-pulse scale-125" />
           <div
             ref={logoRef}
-            className="relative h-24 w-24 rounded-3xl bg-white border border-emerald-100 shadow-xl flex items-center justify-center p-3"
+            className="relative h-16 w-16 rounded-2xl bg-white border border-slate-100 shadow-md flex items-center justify-center p-2.5"
           >
             <Image
               src="/Clip path group.svg"
-              alt="Groww Logo"
-              width={80}
-              height={80}
-              className="h-20 w-20 object-contain"
+              alt="Religare Logo"
+              width={56}
+              height={56}
+              className="h-12 w-12 object-contain"
               priority
             />
           </div>
         </div>
 
-        {/* Text Heading & Subtitle */}
-        <div ref={textRef} className="space-y-2">
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight font-sans">
-            Groww
+        {/* Text Branding */}
+        <div ref={textRef} className="space-y-1">
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight font-sans">
+            Religare
           </h1>
-          <p className="text-xs font-semibold text-slate-500 tracking-wide max-w-xs leading-relaxed">
-            Invest in Stocks, Direct Mutual Funds, ETFs &amp; IPOs
+          <p className="text-[11px] font-semibold text-slate-500 tracking-wide max-w-xs leading-normal">
+            Religare Broking &amp; Wealth Platform
           </p>
         </div>
       </div>
 
-      {/* Bottom Loading Progress Bar */}
-      <div className="w-full max-w-xs space-y-3 pb-6">
+      {/* Bottom Loading Indicator */}
+      <div className="w-full max-w-xs space-y-2 pb-4">
         <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
           <div
             ref={progressRef}
-            className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full"
+            className="h-full bg-emerald-600 rounded-full"
           />
         </div>
-        <p className="text-[10px] font-mono font-bold text-slate-400 text-center uppercase tracking-widest">
+        <p className="text-[9px] font-mono font-bold text-slate-400 text-center uppercase tracking-widest">
           Loading market data...
         </p>
       </div>

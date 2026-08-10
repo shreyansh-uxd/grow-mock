@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ArrowDownRight, TrendingUp } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 interface IndexData {
   name: string;
@@ -11,16 +13,18 @@ interface IndexData {
 }
 
 const INITIAL_INDICES: IndexData[] = [
-  { name: "NIFTY 50", value: 24320.50, change: 142.30, changePercent: 0.59 },
-  { name: "SENSEX", value: 79890.10, change: 410.20, changePercent: 0.52 },
-  { name: "BANK NIFTY", value: 52140.80, change: -85.10, changePercent: -0.16 },
-  { name: "FINNIFTY", value: 23450.25, change: 68.40, changePercent: 0.29 },
-  { name: "MIDCAP 100", value: 56890.40, change: 312.10, changePercent: 0.55 },
-  { name: "IT INDEX", value: 41250.70, change: 280.40, changePercent: 0.68 },
+  { name: "NIFTY 50", value: 24320.5, change: 142.3, changePercent: 0.59 },
+  { name: "SENSEX", value: 79890.1, change: 410.2, changePercent: 0.52 },
+  { name: "BANK NIFTY", value: 52140.8, change: -85.1, changePercent: -0.16 },
+  { name: "FINNIFTY", value: 23450.25, change: 68.4, changePercent: 0.29 },
+  { name: "MIDCAP 100", value: 56890.4, change: 312.1, changePercent: 0.55 },
+  { name: "IT INDEX", value: 41250.7, change: 280.4, changePercent: 0.68 },
 ];
 
 export default function LightMarketTicker() {
   const [indices, setIndices] = useState<IndexData[]>(INITIAL_INDICES);
+  const tickerRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   // Balanced market index tick interval (1400ms)
   useEffect(() => {
@@ -48,7 +52,38 @@ export default function LightMarketTicker() {
     return () => clearInterval(interval);
   }, []);
 
-  const tickerItems = [...indices, ...indices];
+  // GSAP Seamless Marquee Animation Loop
+  useGSAP(
+    () => {
+      if (!tickerRef.current) return;
+      
+      tweenRef.current = gsap.to(tickerRef.current, {
+        xPercent: -50,
+        ease: "none",
+        duration: 25,
+        repeat: -1,
+      });
+
+      return () => {
+        tweenRef.current?.kill();
+      };
+    },
+    { scope: tickerRef }
+  );
+
+  const handleMouseEnter = () => {
+    if (tweenRef.current) {
+      gsap.to(tweenRef.current, { timeScale: 0, duration: 0.4, ease: "power2.out" });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (tweenRef.current) {
+      gsap.to(tweenRef.current, { timeScale: 1, duration: 0.4, ease: "power2.in" });
+    }
+  };
+
+  const tickerItems = [...indices, ...indices, ...indices];
 
   return (
     <div className="bg-slate-50/90 backdrop-blur-sm border-b border-slate-100 px-4 py-2 flex items-center gap-3 overflow-hidden select-none">
@@ -59,16 +94,20 @@ export default function LightMarketTicker() {
       </div>
       <div className="h-3 w-px bg-slate-200 shrink-0 z-10" />
 
-      {/* Smooth Motion Track */}
-      <div className="overflow-hidden w-full relative">
-        <div className="animate-ticker-slow flex items-center gap-3">
+      {/* Smooth GSAP Motion Track */}
+      <div
+        className="overflow-hidden w-full relative cursor-pointer"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div ref={tickerRef} className="flex items-center gap-3 w-max">
           {tickerItems.map((item, idx) => {
             const isPositive = item.change >= 0;
 
             return (
               <div
                 key={`${item.name}-${idx}`}
-                className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-white border border-slate-200/60 shadow-2xs shrink-0 hover:border-emerald-400 transition-all cursor-pointer"
+                className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-white border border-slate-200/60 shadow-2xs shrink-0 hover:border-emerald-400 hover:scale-102 transition-all cursor-pointer"
               >
                 <span className="text-[11px] font-bold text-slate-700 font-sans tracking-tight whitespace-nowrap">
                   {item.name}
@@ -100,3 +139,4 @@ export default function LightMarketTicker() {
     </div>
   );
 }
+

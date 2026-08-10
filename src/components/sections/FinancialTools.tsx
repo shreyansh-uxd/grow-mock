@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { FINANCIAL_TOOLS } from "@/lib/stocks-data";
+import GsapCarousel from "@/components/animations/GsapCarousel";
 import {
   Wallet,
   TrendingUp,
@@ -17,8 +18,6 @@ import {
   Zap,
   Rocket,
   ShoppingBag,
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   X,
 } from "lucide-react";
@@ -52,45 +51,18 @@ const CARD_THEMES = [
 
 export default function FinancialTools() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = direction === "left" ? -260 : 260;
-    scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
-  };
 
   return (
     <section className="py-4 bg-white">
-      {/* Header with Carousel Controls */}
-      <div className="flex items-center justify-between px-4 mb-3">
-        <h2 className="text-sm font-semibold text-slate-500">Tools</h2>
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => scroll("left")}
-            className="p-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-600 transition-all cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Previous Tool"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="p-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-600 transition-all cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Next Tool"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Carousel Track */}
-      <div
-        ref={scrollRef}
-        className="flex items-stretch gap-3 overflow-x-auto px-4 pb-2 no-scrollbar scroll-smooth"
+      <GsapCarousel
+        title="Tools & Calculators"
+        scrollAmount={260}
+        enableScaleEffect={true}
+        showProgress={true}
+        trackClassName="items-stretch"
       >
         {FINANCIAL_TOOLS.map((tool, idx) => {
-          const key =
-            tool.icon || tool.iconName?.toLowerCase() || "wallet";
+          const key = tool.icon || tool.iconName?.toLowerCase() || "wallet";
           const IconComponent = ICON_MAP[key] || Wallet;
           const theme = CARD_THEMES[idx % CARD_THEMES.length];
 
@@ -103,7 +75,7 @@ export default function FinancialTools() {
                 rounded-2xl border ${theme.border} ${theme.bg}
                 p-4 cursor-pointer group
                 hover:shadow-lg hover:scale-[1.03] hover:ring-2 ${theme.ring}
-                transition-all duration-200 ease-out
+                transition-all duration-200 ease-out min-h-[170px]
               `}
             >
               {/* Gradient Icon Badge */}
@@ -155,7 +127,7 @@ export default function FinancialTools() {
             </div>
           );
         })}
-      </div>
+      </GsapCarousel>
 
       {/* Tool Drawer Modal */}
       {activeTool && (
@@ -167,7 +139,7 @@ export default function FinancialTools() {
               </h3>
               <button
                 onClick={() => setActiveTool(null)}
-                className="p-1 text-slate-400 hover:text-slate-600"
+                className="p-1 text-slate-400 hover:text-slate-600 cursor-pointer"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -189,3 +161,4 @@ export default function FinancialTools() {
     </section>
   );
 }
+

@@ -28,16 +28,14 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
         tl.fromTo(
           priceRef.current,
           {
-            y: isUp ? 4 : -4,
-            opacity: 0.3,
+            opacity: 0.7,
             color: isUp ? "#15803d" : "#be123c",
           },
           {
-            y: 0,
             opacity: 1,
             color: "#475569",
-            duration: 0.4,
-            ease: "power3.out",
+            duration: 0.35,
+            ease: "power2.out",
           }
         );
       }
@@ -46,13 +44,11 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
         tl.fromTo(
           badgeRef.current,
           {
-            scale: 1.08,
-            boxShadow: `0 0 12px ${glowColor}`,
+            opacity: 0.7,
           },
           {
-            scale: 1,
-            boxShadow: "0 0 0px transparent",
-            duration: 0.7,
+            opacity: 1,
+            duration: 0.35,
             ease: "power2.out",
           },
           "<"

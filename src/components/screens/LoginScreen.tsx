@@ -67,13 +67,13 @@ export default function LoginScreen({ onLoginSuccess, onSkip }: LoginScreenProps
   return (
     <div
       ref={containerRef}
-      className="w-full h-full bg-white text-slate-900 flex flex-col items-center justify-between p-6 overflow-hidden select-none relative"
+      className="w-full h-full bg-white text-slate-700 flex flex-col items-center justify-between p-6 overflow-hidden select-none relative"
     >
       {/* Top Header */}
       <div className="w-full max-w-xs flex items-center justify-between pt-2">
         <div className="flex items-center gap-2">
           <CompanyLogo symbol="RELIGARE" className="h-8 w-8" />
-          <span className="font-extrabold tracking-tight text-slate-900 text-lg">Religare</span>
+          <span className="font-extrabold tracking-tight text-slate-700 text-lg">Religare</span>
         </div>
 
         {onSkip && (
@@ -89,7 +89,7 @@ export default function LoginScreen({ onLoginSuccess, onSkip }: LoginScreenProps
       {/* Centered Form */}
       <div ref={cardRef} className="w-full max-w-xs my-auto">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Log in</h1>
+          <h1 className="text-2xl font-bold text-slate-700 tracking-tight">Log in</h1>
           <p className="text-xs text-slate-500 mt-1">Welcome back! Please enter your details.</p>
         </div>
 
@@ -104,7 +104,7 @@ export default function LoginScreen({ onLoginSuccess, onSkip }: LoginScreenProps
                 setErrorMessage("");
               }}
               placeholder="aditya@religare.in"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-medium text-slate-900 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-medium text-slate-700 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400"
             />
           </div>
 
@@ -119,7 +119,7 @@ export default function LoginScreen({ onLoginSuccess, onSkip }: LoginScreenProps
                   setErrorMessage("");
                 }}
                 placeholder="••••••••"
-                className="w-full pl-3.5 pr-10 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-medium text-slate-900 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400"
+                className="w-full pl-3.5 pr-10 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-medium text-slate-700 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400"
               />
               <button
                 type="button"

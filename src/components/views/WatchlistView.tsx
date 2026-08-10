@@ -27,6 +27,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const drawerRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const { stocksMap } = useStocks();
 
   useGSAP(
@@ -39,6 +40,28 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
       );
     },
     { scope: drawerRef, dependencies: [isDrawerOpen] }
+  );
+
+  useGSAP(
+    () => {
+      if (!listRef.current) return;
+      const items = Array.from(listRef.current.children);
+      if (items.length > 0) {
+        gsap.fromTo(
+          items,
+          { opacity: 0, y: 12, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            stagger: 0.04,
+            ease: "power2.out",
+          }
+        );
+      }
+    },
+    { scope: listRef, dependencies: [activeTab] }
   );
 
   // Distinct stock datasets for each tab
@@ -134,7 +157,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
       </div>
 
       {/* Stock Items List for Active Tab */}
-      <div className="p-4 space-y-3 bg-white">
+      <div ref={listRef} className="p-4 space-y-3 bg-white">
         {currentStockList.length > 0 ? (
           currentStockList.map((stock) => (
             <div

@@ -21,34 +21,19 @@ export default function RollingNumber({ value, isPositive, tickTime, className =
 
       const digits = containerRef.current.querySelectorAll(".rolling-char");
       const isUp = isPositive;
+      const normalColor = isUp ? "#059669" : "#e11d48";
 
-      // Slot machine digit roll effect
       gsap.fromTo(
         digits,
         {
-          y: isUp ? 8 : -8,
-          opacity: 0,
-          scale: 0.9,
+          opacity: 0.6,
+          color: isUp ? "#10b981" : "#f43f5e",
         },
         {
-          y: 0,
           opacity: 1,
-          scale: 1,
-          duration: 0.45,
-          stagger: 0.03,
-          ease: "back.out(1.7)",
-        }
-      );
-
-      // Subtle scale pulse without background or border
-      gsap.fromTo(
-        containerRef.current,
-        {
-          scale: 1.08,
-        },
-        {
-          scale: 1,
-          duration: 0.5,
+          color: normalColor,
+          duration: 0.35,
+          stagger: 0.02,
           ease: "power2.out",
         }
       );

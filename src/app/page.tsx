@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Navbar from "@/components/ui/Navbar";
 import LightMarketTicker from "@/components/ui/LightMarketTicker";
 import RecentlyViewed from "@/components/sections/RecentlyViewed";
@@ -23,21 +23,21 @@ import MobileFrame from "@/components/ui/MobileFrame";
 import Presentation from "@/presentation/Presentation";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
+import { Home as HomeIcon } from "lucide-react";
 
 /* Tab ordering used to determine slide direction */
 const TAB_ORDER = ["stocks", "watchlist", "portfolio", "more"];
 
 export default function Home() {
   const [showPresentation, setShowPresentation] = useState(true);
+  const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "login" | "app">("splash");
+  const [activeTab, setActiveTab] = useState("stocks");
 
   const handlePresentationComplete = useCallback(() => {
     setShowPresentation(false);
     setScreenMode("splash");
     setActiveTab("stocks");
   }, []);
-
-  const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "login" | "app">("splash");
-  const [activeTab, setActiveTab] = useState("stocks");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
@@ -61,9 +61,46 @@ export default function Home() {
 
   return (
     <StockProvider>
+      {/* Global Partnership Badge (Top-Right) */}
+      <div
+        className="fixed top-5 right-5 md:top-8 md:right-8 z-[10005] flex items-center gap-3 select-none"
+      >
+        <img
+          src="/logo.svg"
+          alt="App Logo"
+          className="h-6 md:h-8 w-auto object-contain"
+        />
+        <span className="h-5 md:h-6 w-[1px] bg-slate-300/80" />
+        <a
+          href="https://uxdlab.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-all duration-300 cursor-pointer active:scale-95 flex items-center"
+          title="Visit UXDLab"
+        >
+          <img
+            src="/uxdlab.png"
+            alt="UXDLab Logo"
+            className="h-5 md:h-7 w-auto object-contain"
+          />
+        </a>
+      </div>
+
       {/* Fullscreen Presentation Overlay (before the app) */}
       {showPresentation && (
         <Presentation onComplete={handlePresentationComplete} />
+      )}
+
+      {/* Floating Home Button to return to Presentation first slide */}
+      {!showPresentation && (
+        <button
+          className="fixed top-6 left-6 z-50 hidden md:flex items-center gap-2 px-4 py-2 text-[10px] font-semibold tracking-wider text-slate-500 hover:text-emerald-700 uppercase bg-white/80 hover:bg-white border border-slate-200/80 hover:border-emerald-600/30 rounded-full shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95 group backdrop-blur-xs"
+          onClick={() => setShowPresentation(true)}
+          title="Return to Presentation"
+        >
+          <HomeIcon className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110 text-slate-400 group-hover:text-emerald-600" />
+          <span>Home</span>
+        </button>
       )}
 
       <MobileFrame>

@@ -20,7 +20,7 @@ export default function PresentationPhoneFrame({
     const handleResize = () => {
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-      const baseWidth = 353;
+      const baseWidth = 376;
       const baseHeight = 715;
       const paddingX = 40;
       const paddingY = 120;
@@ -39,7 +39,7 @@ export default function PresentationPhoneFrame({
   return (
     <div
       style={{ transform: `scale(${scale})`, transformOrigin: "center center" }}
-      className="w-[353px] h-[715px] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none transition-transform duration-75"
+      className="w-[376px] h-[715px] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none transition-transform duration-75"
     >
       {/* Metallic Side Buttons */}
       <div className="absolute -left-[8px] top-24 w-[3px] h-8 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />

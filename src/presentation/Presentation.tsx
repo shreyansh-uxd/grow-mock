@@ -13,13 +13,11 @@ import Comparison from "./slides/Comparison";
 import ShowcaseHome from "./slides/ShowcaseHome";
 import ShowcaseWatchlist from "./slides/ShowcaseWatchlist";
 import ShowcasePortfolio from "./slides/ShowcasePortfolio";
-import Experience from "./slides/Experience";
-import EngagementRoadmap from "./slides/EngagementRoadmap";
 import Reveal from "./slides/Reveal";
 import type { SlideHandle } from "./slides/Intro";
 import "./Presentation.css";
 
-const TOTAL_SCENES = 13;
+const TOTAL_SCENES = 11;
 const SCROLL_COOLDOWN = 1200; // ms between scene transitions
 const TOUCH_THRESHOLD = 50; // px swipe distance to trigger
 
@@ -48,8 +46,6 @@ export default function Presentation({ onComplete }: PresentationProps) {
   const showcaseHomeRef = useRef<SlideHandle>(null);
   const showcaseWatchlistRef = useRef<SlideHandle>(null);
   const showcasePortfolioRef = useRef<SlideHandle>(null);
-  const experienceRef = useRef<SlideHandle>(null);
-  const engagementRoadmapRef = useRef<SlideHandle>(null);
   const revealRef = useRef<SlideHandle>(null);
 
   const slideRefs = [
@@ -63,8 +59,6 @@ export default function Presentation({ onComplete }: PresentationProps) {
     showcaseHomeRef,
     showcaseWatchlistRef,
     showcasePortfolioRef,
-    experienceRef,
-    engagementRoadmapRef,
     revealRef,
   ];
 
@@ -285,9 +279,7 @@ export default function Presentation({ onComplete }: PresentationProps) {
           { idx: 7, el: <ShowcaseHome ref={showcaseHomeRef} /> },
           { idx: 8, el: <ShowcaseWatchlist ref={showcaseWatchlistRef} /> },
           { idx: 9, el: <ShowcasePortfolio ref={showcasePortfolioRef} /> },
-          { idx: 10, el: <Experience ref={experienceRef} /> },
-          { idx: 11, el: <EngagementRoadmap ref={engagementRoadmapRef} /> },
-          { idx: 12, el: <Reveal ref={revealRef} onRevealComplete={handleRevealComplete} /> },
+          { idx: 10, el: <Reveal ref={revealRef} onRevealComplete={handleRevealComplete} /> },
         ].map(({ idx, el }) => (
           <div
             key={idx}

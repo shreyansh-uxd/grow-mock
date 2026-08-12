@@ -10,6 +10,7 @@ import TopMovers from "@/components/sections/TopMovers";
 import TopIntraday from "@/components/sections/TopIntraday";
 import StocksInNews from "@/components/sections/StocksInNews";
 import BottomNav from "@/components/ui/BottomNav";
+import PresentationPhoneFrame from "../components/PresentationPhoneFrame";
 import { Zap, ArrowUpRight, ShieldCheck } from "lucide-react";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
@@ -86,34 +87,26 @@ const ShowcaseHome = forwardRef<SlideHandle>(function ShowcaseHome(_, ref) {
       {/* 2-Column Split Layout: Actual App Home UI on Left, Heading & Features on Right */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-14 px-6 md:px-12">
         
-        {/* LEFT COLUMN: Actual Real App Home UI (Full Height Scrollable Frame) */}
+        {/* LEFT COLUMN: Actual Real App Home UI inside Titanium Frame */}
         <div ref={mockupRef} className="flex-1 flex justify-center md:justify-start">
-          <div className="pres-mockup shadow-2xl" style={{ height: "clamp(480px, 74vh, 680px)", width: "clamp(270px, 34vw, 360px)", maxHeight: "78vh" }}>
-            <div className="pres-mockup__inner p-0 flex flex-col bg-white overflow-hidden text-slate-900 font-sans">
-              
-              {/* Sticky Header with Navbar & LightMarketTicker */}
-              <div className="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-2xs shrink-0">
+          <PresentationPhoneFrame
+            header={
+              <>
                 <Navbar activeTab="stocks" onOpenSearch={noop} onOpenProfile={noop} />
                 <LightMarketTicker />
-              </div>
-
-              {/* Real Home UI Sections Scrollable Content */}
-              <div className="flex-1 overflow-y-auto no-scrollbar pb-4 bg-white text-left">
-                <RecentlyViewed onSelectStock={noop} />
-                <MostTraded onSelectStock={noop} />
-                <FinancialTools />
-                <TopMovers onSelectStock={noop} />
-                <TopIntraday onSelectStock={noop} />
-                <StocksInNews onSelectStock={noop} />
-              </div>
-
-              {/* Real App Bottom Navigation */}
-              <div className="shrink-0">
-                <BottomNav activeTab="stocks" setActiveTab={noop} />
-              </div>
-
+              </>
+            }
+            bottomNav={<BottomNav activeTab="stocks" setActiveTab={noop} />}
+          >
+            <div className="pb-4 bg-white text-left">
+              <RecentlyViewed onSelectStock={noop} />
+              <MostTraded onSelectStock={noop} />
+              <FinancialTools />
+              <TopMovers onSelectStock={noop} />
+              <TopIntraday onSelectStock={noop} />
+              <StocksInNews onSelectStock={noop} />
             </div>
-          </div>
+          </PresentationPhoneFrame>
         </div>
 
         {/* RIGHT COLUMN: Editorial Heading & Stacked Feature Markers */}

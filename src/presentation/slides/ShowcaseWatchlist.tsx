@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react
 import Navbar from "@/components/ui/Navbar";
 import WatchlistView from "@/components/views/WatchlistView";
 import BottomNav from "@/components/ui/BottomNav";
+import PresentationPhoneFrame from "../components/PresentationPhoneFrame";
 import { Plus, Sparkles, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
@@ -80,28 +81,16 @@ const ShowcaseWatchlist = forwardRef<SlideHandle>(function ShowcaseWatchlist(_, 
       {/* 2-Column Split Layout: Actual App Watchlist UI on Left, Heading & Features on Right */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-14 px-6 md:px-12">
         
-        {/* LEFT COLUMN: Actual Real App Watchlist UI (Full Height Scrollable Frame) */}
+        {/* LEFT COLUMN: Actual Real App Watchlist UI inside Titanium Frame */}
         <div ref={mockupRef} className="flex-1 flex justify-center md:justify-start">
-          <div className="pres-mockup shadow-2xl" style={{ height: "clamp(480px, 74vh, 680px)", width: "clamp(270px, 34vw, 360px)", maxHeight: "78vh" }}>
-            <div className="pres-mockup__inner p-0 flex flex-col bg-white overflow-hidden text-slate-900 font-sans">
-              
-              {/* Sticky Header with Navbar */}
-              <div className="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-2xs shrink-0">
-                <Navbar activeTab="watchlist" onOpenSearch={noop} onOpenProfile={noop} />
-              </div>
-
-              {/* Real WatchlistView Scrollable Content */}
-              <div className="flex-1 overflow-y-auto no-scrollbar bg-white text-left">
-                <WatchlistView onSelectStock={noop} onOpenSearch={noop} />
-              </div>
-
-              {/* Real App Bottom Navigation */}
-              <div className="shrink-0">
-                <BottomNav activeTab="watchlist" setActiveTab={noop} />
-              </div>
-
+          <PresentationPhoneFrame
+            header={<Navbar activeTab="watchlist" onOpenSearch={noop} onOpenProfile={noop} />}
+            bottomNav={<BottomNav activeTab="watchlist" setActiveTab={noop} />}
+          >
+            <div className="bg-white text-left">
+              <WatchlistView onSelectStock={noop} onOpenSearch={noop} />
             </div>
-          </div>
+          </PresentationPhoneFrame>
         </div>
 
         {/* RIGHT COLUMN: Editorial Heading & Stacked Feature Markers */}

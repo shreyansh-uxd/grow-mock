@@ -4,7 +4,8 @@ import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react
 import Navbar from "@/components/ui/Navbar";
 import PortfolioView from "@/components/views/PortfolioView";
 import BottomNav from "@/components/ui/BottomNav";
-import { Folder, ShieldCheck, Repeat, PieChart } from "lucide-react";
+import PresentationPhoneFrame from "../components/PresentationPhoneFrame";
+import { ShieldCheck, Repeat, PieChart } from "lucide-react";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
 
@@ -80,28 +81,16 @@ const ShowcasePortfolio = forwardRef<SlideHandle>(function ShowcasePortfolio(_, 
       {/* 2-Column Split Layout: Actual App Portfolio UI on Left, Heading & Features on Right */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-14 px-6 md:px-12">
         
-        {/* LEFT COLUMN: Actual Real App Portfolio UI (Full Height Scrollable Frame) */}
+        {/* LEFT COLUMN: Actual Real App Portfolio UI inside Titanium Frame */}
         <div ref={mockupRef} className="flex-1 flex justify-center md:justify-start">
-          <div className="pres-mockup shadow-2xl" style={{ height: "clamp(480px, 74vh, 680px)", width: "clamp(270px, 34vw, 360px)", maxHeight: "78vh" }}>
-            <div className="pres-mockup__inner p-0 flex flex-col bg-white overflow-hidden text-slate-900 font-sans">
-              
-              {/* Sticky Header with Navbar */}
-              <div className="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-2xs shrink-0">
-                <Navbar activeTab="portfolio" onOpenSearch={noop} onOpenProfile={noop} />
-              </div>
-
-              {/* Real PortfolioView Scrollable Content */}
-              <div className="flex-1 overflow-y-auto no-scrollbar bg-white text-left">
-                <PortfolioView onSelectStock={noop} />
-              </div>
-
-              {/* Real App Bottom Navigation */}
-              <div className="shrink-0">
-                <BottomNav activeTab="portfolio" setActiveTab={noop} />
-              </div>
-
+          <PresentationPhoneFrame
+            header={<Navbar activeTab="portfolio" onOpenSearch={noop} onOpenProfile={noop} />}
+            bottomNav={<BottomNav activeTab="portfolio" setActiveTab={noop} />}
+          >
+            <div className="bg-white text-left">
+              <PortfolioView onSelectStock={noop} />
             </div>
-          </div>
+          </PresentationPhoneFrame>
         </div>
 
         {/* RIGHT COLUMN: Editorial Heading & Stacked Feature Markers */}

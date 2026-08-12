@@ -118,7 +118,7 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
         
         {/* Category Header Label */}
         <div ref={headerRef} className="pres-label pres-label--accent mb-2">
-          02 / MODERN UI STACK &amp; PERFORMANCE ENGINE
+          05 / Modern UI Stack &amp; Performance Engine
         </div>
 
         {/* Green Accent Line */}

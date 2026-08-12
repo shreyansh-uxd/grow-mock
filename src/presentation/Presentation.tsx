@@ -4,18 +4,22 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import Intro from "./slides/Intro";
+import ResearchVision from "./slides/ResearchVision";
+import DesignPhilosophy from "./slides/DesignPhilosophy";
+import CompetitorAudit from "./slides/CompetitorAudit";
+import TaskBenchmark from "./slides/TaskBenchmark";
 import Problem from "./slides/Problem";
 import Comparison from "./slides/Comparison";
-import Shift from "./slides/Shift";
 import ShowcaseHome from "./slides/ShowcaseHome";
 import ShowcaseWatchlist from "./slides/ShowcaseWatchlist";
 import ShowcasePortfolio from "./slides/ShowcasePortfolio";
 import Experience from "./slides/Experience";
+import EngagementRoadmap from "./slides/EngagementRoadmap";
 import Reveal from "./slides/Reveal";
 import type { SlideHandle } from "./slides/Intro";
 import "./Presentation.css";
 
-const TOTAL_SCENES = 9;
+const TOTAL_SCENES = 13;
 const SCROLL_COOLDOWN = 1200; // ms between scene transitions
 const TOUCH_THRESHOLD = 50; // px swipe distance to trigger
 
@@ -35,24 +39,32 @@ export default function Presentation({ onComplete }: PresentationProps) {
 
   // Slide refs
   const introRef = useRef<SlideHandle>(null);
+  const researchVisionRef = useRef<SlideHandle>(null);
+  const designPhilosophyRef = useRef<SlideHandle>(null);
+  const competitorAuditRef = useRef<SlideHandle>(null);
+  const taskBenchmarkRef = useRef<SlideHandle>(null);
   const problemRef = useRef<SlideHandle>(null);
   const comparisonRef = useRef<SlideHandle>(null);
-  const shiftRef = useRef<SlideHandle>(null);
   const showcaseHomeRef = useRef<SlideHandle>(null);
   const showcaseWatchlistRef = useRef<SlideHandle>(null);
   const showcasePortfolioRef = useRef<SlideHandle>(null);
   const experienceRef = useRef<SlideHandle>(null);
+  const engagementRoadmapRef = useRef<SlideHandle>(null);
   const revealRef = useRef<SlideHandle>(null);
 
   const slideRefs = [
     introRef,
+    researchVisionRef,
+    competitorAuditRef,
+    taskBenchmarkRef,
     problemRef,
     comparisonRef,
-    shiftRef,
+    designPhilosophyRef,
     showcaseHomeRef,
     showcaseWatchlistRef,
     showcasePortfolioRef,
     experienceRef,
+    engagementRoadmapRef,
     revealRef,
   ];
 
@@ -234,14 +246,18 @@ export default function Presentation({ onComplete }: PresentationProps) {
       <div style={{ position: "relative", width: "100%", height: "100%" }}>
         {[
           { idx: 0, el: <Intro ref={introRef} /> },
-          { idx: 1, el: <Problem ref={problemRef} /> },
-          { idx: 2, el: <Comparison ref={comparisonRef} /> },
-          { idx: 3, el: <Shift ref={shiftRef} /> },
-          { idx: 4, el: <ShowcaseHome ref={showcaseHomeRef} /> },
-          { idx: 5, el: <ShowcaseWatchlist ref={showcaseWatchlistRef} /> },
-          { idx: 6, el: <ShowcasePortfolio ref={showcasePortfolioRef} /> },
-          { idx: 7, el: <Experience ref={experienceRef} /> },
-          { idx: 8, el: <Reveal ref={revealRef} onRevealComplete={handleRevealComplete} /> },
+          { idx: 1, el: <ResearchVision ref={researchVisionRef} /> },
+          { idx: 2, el: <CompetitorAudit ref={competitorAuditRef} /> },
+          { idx: 3, el: <TaskBenchmark ref={taskBenchmarkRef} /> },
+          { idx: 4, el: <Problem ref={problemRef} /> },
+          { idx: 5, el: <Comparison ref={comparisonRef} /> },
+          { idx: 6, el: <DesignPhilosophy ref={designPhilosophyRef} /> },
+          { idx: 7, el: <ShowcaseHome ref={showcaseHomeRef} /> },
+          { idx: 8, el: <ShowcaseWatchlist ref={showcaseWatchlistRef} /> },
+          { idx: 9, el: <ShowcasePortfolio ref={showcasePortfolioRef} /> },
+          { idx: 10, el: <Experience ref={experienceRef} /> },
+          { idx: 11, el: <EngagementRoadmap ref={engagementRoadmapRef} /> },
+          { idx: 12, el: <Reveal ref={revealRef} onRevealComplete={handleRevealComplete} /> },
         ].map(({ idx, el }) => (
           <div
             key={idx}

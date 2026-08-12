@@ -134,7 +134,7 @@ const Reveal = forwardRef<SlideHandle, RevealProps>(function Reveal({ onRevealCo
       <div className="pres-reveal-container">
         {/* Label */}
         <div ref={labelRef} className="pres-label">
-          Ready to begin
+          Demo Showcase
         </div>
 
         {/* Accent line */}
@@ -161,12 +161,12 @@ const Reveal = forwardRef<SlideHandle, RevealProps>(function Reveal({ onRevealCo
             textAlign: "center",
           }}
         >
-          Your portfolio awaits.
+          Now ready for the full demo showcase.
         </div>
 
         {/* Supporting text */}
         <p ref={subRef} className="pres-subhead" style={{ marginTop: 0 }}>
-          Trade smarter. Track everything. Grow with confidence.
+          Experience the dynamic, high-performance interface of Religare 2.0 firsthand.
         </p>
 
         {/* CTA button */}
@@ -175,7 +175,7 @@ const Reveal = forwardRef<SlideHandle, RevealProps>(function Reveal({ onRevealCo
           onClick={handleEnter}
           className="pres-reveal-cta"
         >
-          Enter the experience →
+          Start Demo Showcase →
         </button>
       </div>
     </div>

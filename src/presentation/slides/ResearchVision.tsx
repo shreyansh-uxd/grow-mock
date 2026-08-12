@@ -4,13 +4,9 @@ import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react
 import Image from "next/image";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
+import type { SlideHandle } from "./Intro";
 
-export interface SlideHandle {
-  animateIn: () => gsap.core.Timeline;
-  animateOut: () => gsap.core.Timeline;
-}
-
-const Intro = forwardRef<SlideHandle>(function Intro(_, ref) {
+const ResearchVision = forwardRef<SlideHandle>(function ResearchVision(_, ref) {
   const sceneRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
@@ -159,7 +155,7 @@ const Intro = forwardRef<SlideHandle>(function Intro(_, ref) {
         <div className="flex-1 flex flex-col items-start text-left max-w-xl">
           {/* Small Category Label */}
           <div ref={labelRef} className="pres-label pres-label--accent mb-2">
-            Architecture for Next-Gen Indian Traders
+            User Experience Research
           </div>
 
           {/* Green Accent Line */}
@@ -176,15 +172,15 @@ const Intro = forwardRef<SlideHandle>(function Intro(_, ref) {
 
           {/* Large Display Headlines */}
           <div ref={line1Ref} className="pres-headline text-left m-0 max-w-none">
-            Religare 2.0:
+            UX Research &amp;
           </div>
           <div ref={line2Ref} className="pres-headline text-left m-0 max-w-none text-emerald-700">
-            UX Redesign
+            Strategic Vision
           </div>
 
           {/* Supporting Statement */}
           <p ref={subRef} className="pres-subhead text-left m-0 mt-4 max-w-lg">
-            Human-Centered Design, Reduced Cognitive Load &amp; Intuitive Experience
+            Decoding trader behavioral patterns, interaction friction, and competitive experience gaps across India&rsquo;s retail trading landscape.
           </p>
         </div>
 
@@ -193,4 +189,4 @@ const Intro = forwardRef<SlideHandle>(function Intro(_, ref) {
   );
 });
 
-export default Intro;
+export default ResearchVision;

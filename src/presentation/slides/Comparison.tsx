@@ -1,45 +1,35 @@
 "use client";
 
 import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react";
-import { Check, X, Sparkles, Zap, Smartphone, Layers, Eye } from "lucide-react";
+import { Check, X, Sparkles, Zap, Layers } from "lucide-react";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
-
-export interface SlideHandle {
-  animateIn: () => gsap.core.Timeline;
-  animateOut: () => gsap.core.Timeline;
-}
+import type { SlideHandle } from "./Intro";
 
 const COMPARISON_ITEMS = [
   {
-    feature: "Motion Engine & Physics",
-    legacy: "30fps Basic CSS / Re-renders",
-    religare: "GSAP 60fps Spring Timelines",
-    winner: true,
+    feature: "Ergonomic 1-Swipe Execution",
+    groww: { text: "Tap Heavy", isPositive: false },
+    angel: { text: "Multi-Step", isPositive: false },
+    religare: { text: "Native Gesture Trigger", isPositive: true },
   },
   {
-    feature: "Route & Tab Switch Latency",
-    legacy: "300ms – 800ms Page Reloads",
-    religare: "Sub-10ms Instant Turbopack Hydration",
-    winner: true,
+    feature: "Contextual Option Chain Visualization",
+    groww: { text: "Basic List", isPositive: false },
+    angel: { text: "High Clutter", isPositive: false },
+    religare: { text: "Visual Payoff Graph", isPositive: true },
   },
   {
-    feature: "Design Language & Hierarchy",
-    legacy: "Cluttered Data Tables & High Cognitive Load",
-    religare: "Editorial Light Mode & Focused Typography",
-    winner: true,
+    feature: "Customizable Modular Dashboard",
+    groww: { text: "Fixed Layout", isPositive: false },
+    angel: { text: "Partial", isPositive: true },
+    religare: { text: "Drag & Drop Widgets", isPositive: true },
   },
   {
-    feature: "Micro-Interactions & Feedback",
-    legacy: "Static Buttons & Plain Text Indicators",
-    religare: "Pulsing Price Tags & Morphing Pill Nav",
-    winner: true,
-  },
-  {
-    feature: "Real-Time Visual Tick Streaming",
-    legacy: "Full-Row Redraws & Jarring Flashes",
-    religare: "Zero-Jank Ticker Reel & Depth Canvas",
-    winner: true,
+    feature: "Cognitive Load Management",
+    groww: { text: "High (Simple)", isPositive: true },
+    angel: { text: "Poor (Overloaded)", isPositive: false },
+    religare: { text: "Optimized Adaptive UI", isPositive: true },
   },
 ];
 
@@ -48,12 +38,11 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
   const headerRef = useRef<HTMLDivElement>(null);
   const accentLineRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
-  const subRef = useRef<HTMLParagraphElement>(null);
   const tableRef = useRef<HTMLDivElement>(null);
   const rowsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.set([headerRef.current, headlineRef.current, subRef.current], { opacity: 0, y: 30 });
+    gsap.set([headerRef.current, headlineRef.current], { opacity: 0, y: 30 });
     gsap.set(accentLineRef.current, { opacity: 0, scaleX: 0 });
     gsap.set(tableRef.current, { opacity: 0, y: 40, scale: 0.97 });
     rowsRef.current.forEach((el) => {
@@ -67,7 +56,7 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
 
       // Reset
       gsap.set(sceneRef.current, { opacity: 1, y: 0 });
-      gsap.set([headerRef.current, headlineRef.current, subRef.current], { opacity: 0, y: 30 });
+      gsap.set([headerRef.current, headlineRef.current], { opacity: 0, y: 30 });
       gsap.set(accentLineRef.current, { opacity: 0, scaleX: 0 });
       gsap.set(tableRef.current, { opacity: 0, y: 40, scale: 0.97 });
       rowsRef.current.forEach((el) => {
@@ -78,7 +67,6 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
       tl.to(headerRef.current, { opacity: 1, y: 0, duration: 0.5, ease: EASE.smooth });
       tl.to(accentLineRef.current, { opacity: 1, scaleX: 1, duration: 0.5, ease: EASE.smooth }, "-=0.3");
       tl.to(headlineRef.current, { opacity: 1, y: 0, duration: DURATION.normal, ease: EASE.dramatic }, "-=0.3");
-      tl.to(subRef.current, { opacity: 1, y: 0, duration: DURATION.normal, ease: EASE.gentle }, "-=0.5");
 
       // Table container
       tl.to(tableRef.current, {
@@ -116,7 +104,7 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
         
         {/* Category Header */}
         <div ref={headerRef} className="pres-label pres-label--accent mb-1">
-          03 / COMPETITIVE UI &amp; MOTION BENCHMARK
+          06 / UX &amp; Usability Feature Matrix
         </div>
 
         {/* Green Accent Line */}
@@ -134,20 +122,11 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
         {/* Headline */}
         <div
           ref={headlineRef}
-          className="text-center mb-2 max-w-3xl"
-          style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.15 }}
+          className="text-center mb-8 max-w-3xl font-bold tracking-tight text-slate-900"
+          style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.25rem)", lineHeight: 1.15 }}
         >
-          Rethinking Brokerage UI &amp; Motion.
+          UX &amp; Usability Feature Matrix
         </div>
-
-        {/* Subtitle */}
-        <p
-          ref={subRef}
-          className="text-center text-slate-500 font-normal max-w-2xl mt-1 mb-8"
-          style={{ fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)", lineHeight: 1.6 }}
-        >
-          How our Next-Gen UI architecture outperforms traditional trading giants in motion, speed, and visual elegance.
-        </p>
 
         {/* Benchmark Comparison Table Card */}
         <div
@@ -156,17 +135,19 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
         >
           {/* Table Column Headers */}
           <div className="grid grid-cols-12 px-6 py-4 bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500">
-            <div className="col-span-4 md:col-span-4 flex items-center gap-1.5">
+            <div className="col-span-4 flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5 text-slate-400" />
-              <span>UI &amp; Motion Dimension</span>
+              <span>UX Design Dimension</span>
             </div>
-            <div className="col-span-4 md:col-span-4 text-slate-400 flex items-center gap-1.5">
-              <X className="w-3.5 h-3.5 text-slate-400" />
-              <span>Traditional Platforms (Groww / Angel / Zerodha)</span>
+            <div className="col-span-2 flex items-center gap-1.5">
+              <span>Groww</span>
             </div>
-            <div className="col-span-4 md:col-span-4 text-emerald-700 flex items-center gap-1.5 font-black">
+            <div className="col-span-2 flex items-center gap-1.5">
+              <span>Angel One</span>
+            </div>
+            <div className="col-span-4 text-emerald-700 flex items-center gap-1.5 font-black">
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Religare (Next-Gen UI)</span>
+              <span>Religare 2.0 (Proposed UX)</span>
             </div>
           </div>
 
@@ -179,25 +160,49 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
                 className="grid grid-cols-12 px-6 py-4 text-xs items-center transition-colors hover:bg-slate-50/50"
               >
                 {/* Feature Name */}
-                <div className="col-span-4 md:col-span-4 font-bold text-slate-900 flex items-center gap-2">
+                <div className="col-span-4 font-bold text-slate-900 flex items-center gap-2 pr-4">
                   <span className="w-2 h-2 rounded-full bg-emerald-500/80 shrink-0" />
                   <span>{item.feature}</span>
                 </div>
 
-                {/* Legacy Platforms Column */}
-                <div className="col-span-4 md:col-span-4 text-slate-500 font-medium pr-4 flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0">
-                    <X className="w-2.5 h-2.5 stroke-[3]" />
+                {/* Groww Column */}
+                <div className="col-span-2 text-slate-500 font-medium pr-4 flex items-center gap-2">
+                  <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+                    item.groww.isPositive ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-500"
+                  }`}>
+                    {item.groww.isPositive ? (
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    ) : (
+                      <X className="w-2.5 h-2.5 stroke-[3]" />
+                    )}
                   </span>
-                  <span className="line-through text-slate-400">{item.legacy}</span>
+                  <span className={item.groww.isPositive ? "text-slate-800 font-semibold" : "line-through text-slate-400"}>
+                    {item.groww.text}
+                  </span>
                 </div>
 
-                {/* Religare Next-Gen UI Column (Highlighted) */}
-                <div className="col-span-4 md:col-span-4 font-extrabold text-emerald-800 flex items-center gap-2.5 bg-emerald-50/60 p-2 rounded-xl border border-emerald-200/50">
+                {/* Angel One Column */}
+                <div className="col-span-2 text-slate-500 font-medium pr-4 flex items-center gap-2">
+                  <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+                    item.angel.isPositive ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-500"
+                  }`}>
+                    {item.angel.isPositive ? (
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    ) : (
+                      <X className="w-2.5 h-2.5 stroke-[3]" />
+                    )}
+                  </span>
+                  <span className={item.angel.isPositive ? "text-slate-800 font-semibold" : "line-through text-slate-400"}>
+                    {item.angel.text}
+                  </span>
+                </div>
+
+                {/* Religare 2.0 Column (Highlighted) */}
+                <div className="col-span-4 font-extrabold text-emerald-800 flex items-center gap-2 bg-emerald-50/60 p-2 rounded-xl border border-emerald-200/50">
                   <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
                     <Check className="w-3 h-3 stroke-[3]" />
                   </span>
-                  <span>{item.religare}</span>
+                  <span>{item.religare.text}</span>
                 </div>
               </div>
             ))}
@@ -207,11 +212,11 @@ const Comparison = forwardRef<SlideHandle>(function Comparison(_, ref) {
           <div className="px-6 py-3.5 bg-emerald-50/90 border-t border-emerald-200/80 text-emerald-950 flex items-center justify-between text-xs">
             <div className="flex items-center gap-2 font-mono">
               <Zap className="w-4 h-4 text-emerald-700" />
-              <span className="font-bold text-emerald-800">BENCHMARK SUMMARY:</span>
-              <span className="text-emerald-900 font-medium">100% Focused on Premium Motion &amp; User Experience</span>
+              <span className="font-bold text-emerald-800">MATRIX SUMMARY:</span>
+              <span className="text-emerald-900 font-medium">Overwhelming competitive advantage in UX execution &amp; cognitive load containment</span>
             </div>
             <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-800 bg-white px-3 py-1 rounded-full border border-emerald-300 shadow-2xs font-bold hidden md:inline-block">
-              UI DESIGN ADVANTAGE
+              UX FEATURE ADVANTAGE
             </span>
           </div>
 

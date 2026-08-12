@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 import gsap from "gsap";
 import Intro from "./slides/Intro";
 import ResearchVision from "./slides/ResearchVision";
 import DesignPhilosophy from "./slides/DesignPhilosophy";
 import CompetitorAudit from "./slides/CompetitorAudit";
 import TaskBenchmark from "./slides/TaskBenchmark";
-import Problem from "./slides/Problem";
+import UXPillars from "./slides/UXPillars";
 import Comparison from "./slides/Comparison";
 import ShowcaseHome from "./slides/ShowcaseHome";
 import ShowcaseWatchlist from "./slides/ShowcaseWatchlist";
@@ -43,7 +43,7 @@ export default function Presentation({ onComplete }: PresentationProps) {
   const designPhilosophyRef = useRef<SlideHandle>(null);
   const competitorAuditRef = useRef<SlideHandle>(null);
   const taskBenchmarkRef = useRef<SlideHandle>(null);
-  const problemRef = useRef<SlideHandle>(null);
+  const uxPillarsRef = useRef<SlideHandle>(null);
   const comparisonRef = useRef<SlideHandle>(null);
   const showcaseHomeRef = useRef<SlideHandle>(null);
   const showcaseWatchlistRef = useRef<SlideHandle>(null);
@@ -57,7 +57,7 @@ export default function Presentation({ onComplete }: PresentationProps) {
     researchVisionRef,
     competitorAuditRef,
     taskBenchmarkRef,
-    problemRef,
+    uxPillarsRef,
     comparisonRef,
     designPhilosophyRef,
     showcaseHomeRef,
@@ -101,6 +101,36 @@ export default function Presentation({ onComplete }: PresentationProps) {
       setShowCue(false);
     }
   }, [currentScene]);
+
+  // Navigate to first scene
+  const goToFirstScene = useCallback(() => {
+    if (currentScene === 0 || isAnimating) return;
+
+    const now = Date.now();
+    lastScrollTime.current = now;
+    setIsAnimating(true);
+
+    const currentSlide = slideRefs[currentScene]?.current;
+    const firstSlide = slideRefs[0]?.current;
+
+    if (!currentSlide || !firstSlide) {
+      setIsAnimating(false);
+      return;
+    }
+
+    const outTl = currentSlide.animateOut();
+    outTl.eventCallback("onComplete", () => {
+      setCurrentScene(0);
+
+      // Small delay before animating in
+      setTimeout(() => {
+        const inTl = firstSlide.animateIn();
+        inTl.eventCallback("onComplete", () => {
+          setIsAnimating(false);
+        });
+      }, 100);
+    });
+  }, [currentScene, isAnimating, slideRefs]);
 
   // Navigate to next scene
   const goToScene = useCallback(
@@ -249,7 +279,7 @@ export default function Presentation({ onComplete }: PresentationProps) {
           { idx: 1, el: <ResearchVision ref={researchVisionRef} /> },
           { idx: 2, el: <CompetitorAudit ref={competitorAuditRef} /> },
           { idx: 3, el: <TaskBenchmark ref={taskBenchmarkRef} /> },
-          { idx: 4, el: <Problem ref={problemRef} /> },
+          { idx: 4, el: <UXPillars ref={uxPillarsRef} /> },
           { idx: 5, el: <Comparison ref={comparisonRef} /> },
           { idx: 6, el: <DesignPhilosophy ref={designPhilosophyRef} /> },
           { idx: 7, el: <ShowcaseHome ref={showcaseHomeRef} /> },
@@ -272,6 +302,17 @@ export default function Presentation({ onComplete }: PresentationProps) {
           </div>
         ))}
       </div>
+
+      {/* Home button */}
+      <button
+        className={`pres-home ${currentScene === 0 ? "is-hidden" : ""}`}
+        onClick={goToFirstScene}
+        disabled={currentScene === 0 || isAnimating}
+        title="Go to first slide"
+      >
+        <Home className="w-3.5 h-3.5 pres-home__icon" />
+        <span>Home</span>
+      </button>
 
       {/* Skip button */}
       <button className="pres-skip" onClick={handleSkip}>

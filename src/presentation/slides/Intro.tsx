@@ -175,15 +175,15 @@ const Intro = forwardRef<SlideHandle>(function Intro(_, ref) {
           />
 
           {/* Large Display Headlines */}
-          <div ref={line1Ref} className="pres-headline text-left m-0 max-w-none">
+          <div ref={line1Ref} className="pres-headline text-left m-0 max-w-none" style={{ textAlign: "left", margin: 0 }}>
             Religare 2.0:
           </div>
-          <div ref={line2Ref} className="pres-headline text-left m-0 max-w-none text-emerald-700">
+          <div ref={line2Ref} className="pres-headline text-left m-0 max-w-none text-emerald-700" style={{ textAlign: "left", margin: 0 }}>
             UX Redesign
           </div>
 
           {/* Supporting Statement */}
-          <p ref={subRef} className="pres-subhead text-left m-0 mt-4 max-w-lg">
+          <p ref={subRef} className="pres-subhead text-left m-0 mt-4 max-w-lg" style={{ textAlign: "left", marginLeft: 0, marginRight: 0, marginTop: "1rem" }}>
             Human-Centered Design, Reduced Cognitive Load &amp; Intuitive Experience
           </p>
         </div>

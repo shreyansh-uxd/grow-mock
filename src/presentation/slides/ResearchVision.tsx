@@ -171,15 +171,15 @@ const ResearchVision = forwardRef<SlideHandle>(function ResearchVision(_, ref) {
           />
 
           {/* Large Display Headlines */}
-          <div ref={line1Ref} className="pres-headline text-left m-0 max-w-none">
+          <div ref={line1Ref} className="pres-headline text-left m-0 max-w-none" style={{ textAlign: "left", margin: 0 }}>
             UX Research &amp;
           </div>
-          <div ref={line2Ref} className="pres-headline text-left m-0 max-w-none text-emerald-700">
+          <div ref={line2Ref} className="pres-headline text-left m-0 max-w-none text-emerald-700" style={{ textAlign: "left", margin: 0 }}>
             Strategic Vision
           </div>
 
           {/* Supporting Statement */}
-          <p ref={subRef} className="pres-subhead text-left m-0 mt-4 max-w-lg">
+          <p ref={subRef} className="pres-subhead text-left m-0 mt-4 max-w-lg" style={{ textAlign: "left", marginLeft: 0, marginRight: 0, marginTop: "1rem" }}>
             Decoding trader behavioral patterns, interaction friction, and competitive experience gaps across India&rsquo;s retail trading landscape.
           </p>
         </div>

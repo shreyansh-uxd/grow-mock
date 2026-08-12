@@ -1,46 +1,33 @@
 "use client";
 
 import React, { useRef, useEffect, useImperativeHandle, forwardRef } from "react";
-import { Zap, Cpu, Layers, Activity, Sparkles, LineChart } from "lucide-react";
+import { Layers, Hand, Palette } from "lucide-react";
 import gsap from "gsap";
 import { EASE, DURATION } from "../animations/presentationAnimations";
+import type { SlideHandle } from "./Intro";
 
-export interface SlideHandle {
-  animateIn: () => gsap.core.Timeline;
-  animateOut: () => gsap.core.Timeline;
-}
-
-const TECH_CARDS = [
+const PILLAR_CARDS = [
   {
-    icon: Zap,
-    badge: "GSAP 3.15 + React 19",
-    title: "60 FPS Motion Engine",
-    desc: "Butter-smooth timeline orchestration, spring physics, and fluid touch gesture interpolation.",
-    stat: "60 FPS",
-    statLabel: "Physics Render Rate",
-    accentBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    icon: Layers,
+    title: "Progressive Disclosure",
+    desc: "Hide overwhelming technical indicators until requested. Dynamic option chains adapt cleanly based on user expertise levels.",
+    accentBg: "bg-emerald-50 text-emerald-700 border-emerald-100",
   },
   {
-    icon: Cpu,
-    badge: "Next.js 16 Turbopack",
-    title: "Instant Route Hydration",
-    desc: "Sub-millisecond view transitions, zero layout shift, and server-optimized bundle execution.",
-    stat: "< 10ms",
-    statLabel: "Transition Latency",
-    accentBg: "bg-sky-50 text-sky-700 border-sky-200",
+    icon: Hand,
+    title: "1-Swipe Context Actions",
+    desc: "Execute multi-leg option strategies and margin pledges effortlessly using intuitive gesture triggers and visual order confirmation cards.",
+    accentBg: "bg-sky-50 text-sky-700 border-sky-100",
   },
   {
-    icon: LineChart,
-    badge: "Real-Time Stock Pipeline",
-    title: "Live Market Tick Sync",
-    desc: "High-frequency state distribution streaming live price ticks, gain badges, and depth charts.",
-    stat: "900ms",
-    statLabel: "Live Tick Frequency",
-    accentBg: "bg-purple-50 text-purple-700 border-purple-200",
+    icon: Palette,
+    title: "Accessible Design System",
+    desc: "WCAG 2.1 AA compliant color contrasts, custom TradingView widget styling, and customizable modular dashboard cards.",
+    accentBg: "bg-purple-50 text-purple-700 border-purple-100",
   },
 ];
 
-const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
+const UXPillars = forwardRef<SlideHandle>(function UXPillars(_, ref) {
   const sceneRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const accentLineRef = useRef<HTMLDivElement>(null);
@@ -70,25 +57,37 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
 
       // Header label
       tl.to(headerRef.current, {
-        opacity: 1, y: 0, duration: 0.5, ease: EASE.smooth,
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: EASE.smooth,
       });
 
       // Accent Line
       tl.to(accentLineRef.current, {
-        opacity: 1, scaleX: 1, duration: 0.5, ease: EASE.smooth,
+        opacity: 1,
+        scaleX: 1,
+        duration: 0.5,
+        ease: EASE.smooth,
       }, "-=0.3");
 
       // Headline
       tl.to(headlineRef.current, {
-        opacity: 1, y: 0, duration: DURATION.normal, ease: EASE.dramatic,
+        opacity: 1,
+        y: 0,
+        duration: DURATION.normal,
+        ease: EASE.dramatic,
       }, "-=0.3");
 
       // Supporting subtitle
       tl.to(subRef.current, {
-        opacity: 1, y: 0, duration: DURATION.normal, ease: EASE.gentle,
+        opacity: 1,
+        y: 0,
+        duration: DURATION.normal,
+        ease: EASE.gentle,
       }, "-=0.5");
 
-      // Staggered Tech Cards
+      // Staggered Cards
       cardsRef.current.forEach((card, idx) => {
         if (!card) return;
         tl.to(card, {
@@ -106,19 +105,22 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
     animateOut: () => {
       const tl = gsap.timeline();
       tl.to(sceneRef.current, {
-        opacity: 0, y: -30, duration: 0.5, ease: "power2.in",
+        opacity: 0,
+        y: -30,
+        duration: 0.5,
+        ease: "power2.in",
       });
       return tl;
     },
   }));
 
   return (
-    <div ref={sceneRef} className="pres-scene">
+    <div ref={sceneRef} className="pres-scene justify-start pt-12 md:pt-16">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center px-4 md:px-8">
         
         {/* Category Header Label */}
         <div ref={headerRef} className="pres-label pres-label--accent mb-2">
-          05 / Modern UI Stack &amp; Performance Engine
+          05 / Core Pillars of UX Transformation
         </div>
 
         {/* Green Accent Line */}
@@ -136,10 +138,10 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
         {/* Headline */}
         <div
           ref={headlineRef}
-          className="text-center mb-2 max-w-2xl"
+          className="text-center mb-2 max-w-2xl text-slate-900"
           style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.15 }}
         >
-          Engineered with Next-Gen UI Technology.
+          Core Pillars of UX Transformation
         </div>
 
         {/* Supporting Subtitle */}
@@ -148,12 +150,12 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
           className="text-center text-slate-500 font-normal max-w-xl mt-1 mb-8"
           style={{ fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)", lineHeight: 1.6 }}
         >
-          Crafted for 60fps hardware-accelerated animations, sub-millisecond route transitions, and instant live market streaming.
+          Foundational design strategies driving cognitive offloading, rapid execution gestures, and WCAG-compliant design accessibility.
         </p>
 
-        {/* 3 Tech Showcase Cards */}
+        {/* 3 Pillars Cards */}
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          {TECH_CARDS.map((card, idx) => {
+          {PILLAR_CARDS.map((card, idx) => {
             const IconComponent = card.icon;
             return (
               <div
@@ -161,20 +163,20 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
                 ref={(el) => { cardsRef.current[idx] = el; }}
                 className="group p-6 rounded-3xl bg-white border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Top Badge & Icon */}
                 <div className="space-y-4">
+                  {/* Top Icon */}
                   <div className="flex items-center justify-between">
                     <div className="w-11 h-11 rounded-2xl bg-slate-100/90 border border-slate-200 flex items-center justify-center text-slate-800 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 transition-colors duration-300">
                       <IconComponent className="w-5 h-5 stroke-[2.2]" />
                     </div>
                     <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${card.accentBg}`}>
-                      {card.badge}
+                      Pillar {idx + 1}
                     </span>
                   </div>
 
                   {/* Card Title & Desc */}
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 tracking-tight font-sans mb-1.5">
+                    <h3 className="text-lg font-bold text-slate-900 tracking-tight font-sans mb-2 group-hover:text-emerald-700 transition-colors duration-200">
                       {card.title}
                     </h3>
                     <p className="text-xs text-slate-500 font-normal leading-relaxed">
@@ -183,14 +185,10 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
                   </div>
                 </div>
 
-                {/* Bottom Stat Footer */}
-                <div className="pt-5 mt-6 border-t border-slate-100 flex items-baseline justify-between">
-                  <span className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-widest">
-                    {card.statLabel}
-                  </span>
-                  <span className="text-sm font-mono font-black text-slate-800 group-hover:text-emerald-700 transition-colors">
-                    {card.stat}
-                  </span>
+                {/* Bottom design accent */}
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-400">
+                  <span className="text-[9px] font-mono tracking-widest uppercase">Religare 2.0 UX</span>
+                  <span className="text-xs font-mono font-bold text-slate-300 group-hover:text-emerald-600 transition-colors duration-200">→</span>
                 </div>
               </div>
             );
@@ -202,4 +200,4 @@ const Problem = forwardRef<SlideHandle>(function Problem(_, ref) {
   );
 });
 
-export default Problem;
+export default UXPillars;

@@ -161,7 +161,7 @@ const Reveal = forwardRef<SlideHandle, RevealProps>(function Reveal({ onRevealCo
             textAlign: "center",
           }}
         >
-          Now ready for the full demo showcase.
+          Now ready for the UX showcase
         </div>
 
         {/* Supporting text */}

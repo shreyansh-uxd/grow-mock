@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Navbar from "@/components/ui/Navbar";
 import LightMarketTicker from "@/components/ui/LightMarketTicker";
 import RecentlyViewed from "@/components/sections/RecentlyViewed";
@@ -20,6 +20,7 @@ import SplashScreen from "@/components/screens/SplashScreen";
 import OnboardingScreen from "@/components/screens/OnboardingScreen";
 import LoginScreen from "@/components/screens/LoginScreen";
 import MobileFrame from "@/components/ui/MobileFrame";
+import Presentation from "@/presentation/Presentation";
 import { Stock } from "@/lib/stocks-data";
 import { StockProvider } from "@/context/StockContext";
 
@@ -27,6 +28,12 @@ import { StockProvider } from "@/context/StockContext";
 const TAB_ORDER = ["stocks", "watchlist", "portfolio", "more"];
 
 export default function Home() {
+  const [showPresentation, setShowPresentation] = useState(true);
+
+  const handlePresentationComplete = useCallback(() => {
+    setShowPresentation(false);
+  }, []);
+
   const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "login" | "app">("splash");
   const [activeTab, setActiveTab] = useState("stocks");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
@@ -52,11 +59,16 @@ export default function Home() {
 
   return (
     <StockProvider>
+      {/* Fullscreen Presentation Overlay (before the app) */}
+      {showPresentation && (
+        <Presentation onComplete={handlePresentationComplete} />
+      )}
+
       <MobileFrame>
         {/* 1. Splash Screen Mode */}
-        {screenMode === "splash" && (
-          <SplashScreen onComplete={() => setScreenMode("onboarding")} />
-        )}
+          {screenMode === "splash" && (
+            <SplashScreen onComplete={() => setScreenMode("onboarding")} />
+          )}
 
         {/* 2. Onboarding Screen Mode (3 Interactive Slides) */}
         {screenMode === "onboarding" && (

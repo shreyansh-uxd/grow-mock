@@ -1,0 +1,396 @@
+/* ─────────────────────────────────────────────────────
+   PRESENTATION DESIGN SYSTEM
+   Light · Minimal · Editorial · Premium
+   ───────────────────────────────────────────────────── */
+
+/* === LAYER === */
+.pres-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #FAFAFA;
+  font-family: var(--font-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === SCENE CONTAINER === */
+.pres-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 4vw, 5rem);
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+/* === TYPOGRAPHY === */
+
+.pres-label {
+  font-size: clamp(0.625rem, 1vw, 0.8125rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B6B6B;
+  margin-bottom: clamp(1rem, 2vh, 2rem);
+}
+
+.pres-label--accent {
+  color: #1E7240;
+}
+
+.pres-headline {
+  font-size: clamp(2.5rem, 7vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #111111;
+  text-align: center;
+  max-width: 14ch;
+  margin: 0 auto;
+}
+
+.pres-headline--sm {
+  font-size: clamp(2rem, 5vw, 5.5rem);
+}
+
+.pres-headline--md {
+  font-size: clamp(2.25rem, 6vw, 6.5rem);
+}
+
+.pres-subhead {
+  font-size: clamp(1rem, 1.8vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #6B6B6B;
+  text-align: center;
+  max-width: 42ch;
+  margin: clamp(1rem, 2vh, 2rem) auto 0;
+}
+
+.pres-number {
+  font-size: clamp(0.6875rem, 1vw, 0.875rem);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: #6B6B6B;
+}
+
+.pres-number--accent {
+  color: #1E7240;
+}
+
+/* === PROBLEM SCENE STATEMENT === */
+.pres-statement {
+  font-size: clamp(2rem, 5.5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #181818;
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+/* === DIVIDER === */
+.pres-divider {
+  width: 3rem;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: clamp(0.75rem, 1.5vh, 1.5rem) 0;
+}
+
+.pres-divider--wide {
+  width: 5rem;
+}
+
+.pres-divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === CAPABILITY ITEM (Experience Scene) === */
+.pres-capability {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  will-change: transform, opacity;
+}
+
+.pres-capability__index {
+  font-size: clamp(0.6875rem, 0.9vw, 0.8125rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #1E7240;
+  white-space: nowrap;
+  min-width: 2.5rem;
+}
+
+.pres-capability__title {
+  font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #181818;
+}
+
+.pres-capability__desc {
+  font-size: clamp(0.8125rem, 1.1vw, 1rem);
+  font-weight: 400;
+  color: #6B6B6B;
+  margin-top: 0.25rem;
+}
+
+/* === PRODUCT MOCKUP === */
+.pres-mockup {
+  width: clamp(240px, 28vw, 380px);
+  height: clamp(480px, 56vw, 760px);
+  max-height: 70vh;
+  border-radius: 2.5rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  overflow: hidden;
+  will-change: transform, opacity, clip-path;
+  position: relative;
+}
+
+.pres-mockup__inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2.25rem;
+  background: #FFFFFF;
+}
+
+/* === PROGRESS INDICATOR === */
+.pres-progress {
+  position: fixed;
+  bottom: clamp(1.5rem, 3vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  user-select: none;
+}
+
+.pres-progress__text {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #6B6B6B;
+  font-variant-numeric: tabular-nums;
+}
+
+.pres-progress__bar {
+  width: 4rem;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.pres-progress__fill {
+  height: 100%;
+  background: #1E7240;
+  border-radius: 1px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === SKIP BUTTON === */
+.pres-skip {
+  position: fixed;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  right: clamp(1.5rem, 3vw, 3rem);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6B6B6B;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  font-family: inherit;
+}
+
+.pres-skip:hover {
+  color: #111111;
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.pres-skip__arrow {
+  font-size: 0.875rem;
+  transition: transform 0.3s ease;
+}
+
+.pres-skip:hover .pres-skip__arrow {
+  transform: translateX(2px);
+}
+
+/* === SCROLL CUE === */
+.pres-cue {
+  position: fixed;
+  bottom: clamp(3.5rem, 6vh, 5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+  animation: pres-cue-pulse 2.5s ease-in-out infinite;
+}
+
+.pres-cue__line {
+  width: 1px;
+  height: 1.5rem;
+  background: linear-gradient(180deg, transparent, #6B6B6B);
+}
+
+.pres-cue__text {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6B6B6B;
+}
+
+@keyframes pres-cue-pulse {
+  0%, 100% { opacity: 0.25; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.55; transform: translateX(-50%) translateY(4px); }
+}
+
+/* === SHIFT SCENE WORD === */
+.pres-shift-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* === LOGO MARK === */
+.pres-logo {
+  width: clamp(2rem, 3vw, 3rem);
+  height: clamp(2rem, 3vw, 3rem);
+  opacity: 0;
+  will-change: opacity;
+}
+
+/* === REVEAL SCENE === */
+.pres-reveal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vh, 2.5rem);
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.pres-reveal-cta {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1E7240;
+  padding: 0.75rem 2rem;
+  border: 1px solid rgba(30, 114, 64, 0.2);
+  border-radius: 2rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.pres-reveal-cta:hover {
+  background: rgba(30, 114, 64, 0.05);
+  border-color: rgba(30, 114, 64, 0.4);
+}
+
+/* === RESPONSIVE === */
+
+@media (max-width: 768px) {
+  .pres-scene {
+    padding: clamp(1rem, 5vw, 2rem);
+  }
+
+  .pres-headline {
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .pres-headline--sm {
+    font-size: clamp(1.75rem, 8vw, 3rem);
+  }
+
+  .pres-headline--md {
+    font-size: clamp(1.875rem, 9vw, 3.25rem);
+  }
+
+  .pres-statement {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .pres-subhead {
+    font-size: clamp(0.875rem, 3.5vw, 1.125rem);
+    max-width: 100%;
+  }
+
+  .pres-capability__title {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+  }
+
+  .pres-mockup {
+    width: clamp(200px, 55vw, 280px);
+    height: clamp(400px, 110vw, 560px);
+    max-height: 50vh;
+    border-radius: 2rem;
+  }
+
+  .pres-progress {
+    bottom: 1.25rem;
+  }
+
+  .pres-skip {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pres-headline {
+    font-size: clamp(1.75rem, 11vw, 2.75rem);
+  }
+
+  .pres-statement {
+    font-size: clamp(1.25rem, 7vw, 2rem);
+  }
+
+  .pres-mockup {
+    width: 65vw;
+    height: auto;
+    aspect-ratio: 9 / 19;
+    max-height: 45vh;
+  }
+}

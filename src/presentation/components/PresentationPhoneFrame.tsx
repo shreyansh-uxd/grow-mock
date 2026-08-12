@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Wifi, Battery, Signal } from "lucide-react";
 
 interface PresentationPhoneFrameProps {
@@ -14,8 +14,33 @@ export default function PresentationPhoneFrame({
   children,
   bottomNav,
 }: PresentationPhoneFrameProps) {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const baseWidth = 353;
+      const baseHeight = 715;
+      const paddingX = 40;
+      const paddingY = 120;
+
+      const scaleX = (vw - paddingX) / baseWidth;
+      const scaleY = (vh - paddingY) / baseHeight;
+      const newScale = Math.min(1, scaleX, scaleY);
+      setScale(Math.max(0.4, newScale));
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="w-[280px] sm:w-[295px] md:w-[310px] h-[610px] sm:h-[665px] md:h-[715px] max-h-[82vh] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none">
+    <div
+      style={{ transform: `scale(${scale})`, transformOrigin: "center center" }}
+      className="w-[353px] h-[715px] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none transition-transform duration-75"
+    >
       {/* Metallic Side Buttons */}
       <div className="absolute -left-[8px] top-24 w-[3px] h-8 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />
       <div className="absolute -left-[8px] top-36 w-[3px] h-10 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />

@@ -9,6 +9,8 @@ interface MobileFrameProps {
 
 export default function MobileFrame({ children }: MobileFrameProps) {
   const [currentTime, setCurrentTime] = useState("09:41");
+  const [scale, setScale] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -22,6 +24,33 @@ export default function MobileFrame({ children }: MobileFrameProps) {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const desktop = vw >= 768;
+      setIsDesktop(desktop);
+
+      if (desktop) {
+        const baseWidth = 425;
+        const baseHeight = 844;
+        const paddingX = 40;
+        const paddingY = 80;
+
+        const scaleX = (vw - paddingX) / baseWidth;
+        const scaleY = (vh - paddingY) / baseHeight;
+        const newScale = Math.min(1, scaleX, scaleY);
+        setScale(Math.max(0.4, newScale));
+      } else {
+        setScale(1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="w-full h-screen overflow-hidden bg-gradient-to-br from-slate-100 via-emerald-50/40 to-slate-200 text-slate-900 flex items-center justify-center p-0 md:p-4 lg:p-6 font-sans relative">
       {/* Light Mode Soft Ambient Glow Orbs (Desktop Only) */}
@@ -31,9 +60,12 @@ export default function MobileFrame({ children }: MobileFrameProps) {
       {/* 
         Outer Phone Mockup Frame:
         - On mobile (< md): Native 100% width/height, 0 padding, 0 borders
-        - On desktop (>= md): Sleek Light Titanium/Silver Phone Frame (390px x 844px max-h 94vh)
+        - On desktop (>= md): Sleek Light Titanium/Silver Phone Frame (390px x 844px) - scaled to keep aspect ratio fixed on zoom
       */}
-      <div className="w-full h-full md:w-[400px] md:h-[844px] md:max-h-[94vh] bg-slate-200/90 border border-slate-300/80 md:rounded-[48px] md:p-3 md:shadow-[0_20px_70px_rgba(0,0,0,0.12)] md:ring-1 md:ring-white relative flex flex-col shrink-0">
+      <div
+        style={isDesktop ? { transform: `scale(${scale})`, transformOrigin: "center center" } : {}}
+        className="w-full h-full md:w-[425px] md:h-[844px] bg-slate-200/90 border border-slate-300/80 md:rounded-[48px] md:p-3 md:shadow-[0_20px_70px_rgba(0,0,0,0.12)] md:ring-1 md:ring-white relative flex flex-col shrink-0 transition-transform duration-75"
+      >
         
         {/* Metallic Side Buttons (Desktop Only) */}
         <div className="hidden md:block absolute -left-[9px] top-28 w-[3px] h-10 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />

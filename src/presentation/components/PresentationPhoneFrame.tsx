@@ -15,7 +15,7 @@ export default function PresentationPhoneFrame({
   bottomNav,
 }: PresentationPhoneFrameProps) {
   return (
-    <div className="w-[300px] sm:w-[320px] md:w-[340px] h-[580px] sm:h-[620px] md:h-[660px] max-h-[76vh] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none">
+    <div className="w-[280px] sm:w-[295px] md:w-[310px] h-[610px] sm:h-[665px] md:h-[715px] max-h-[82vh] bg-slate-200/90 border border-slate-300/80 rounded-[44px] p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-white relative flex flex-col shrink-0 select-none">
       {/* Metallic Side Buttons */}
       <div className="absolute -left-[8px] top-24 w-[3px] h-8 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />
       <div className="absolute -left-[8px] top-36 w-[3px] h-10 bg-slate-300 border-l border-slate-400/60 rounded-l-sm shadow-2xs" />

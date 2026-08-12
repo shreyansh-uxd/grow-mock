@@ -127,14 +127,14 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
       )}
 
       {/* Watchlist Sub-Header & Dynamic Working Tabs */}
-      <div className="bg-white border-b border-slate-200 px-4 py-3">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar flex-1 pr-2">
+      <div className="bg-white border-b border-slate-200 px-3 py-2">
+        <div className="flex items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-1 pr-2">
             {watchlists.map((wl) => (
               <button
                 key={wl}
                 onClick={() => setActiveTab(wl)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === wl
                     ? "bg-emerald-600 text-white shadow-xs shadow-emerald-600/20"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -148,7 +148,7 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
           {/* Functional + New Button */}
           <button
             onClick={() => setIsDrawerOpen(true)}
-            className="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold rounded-full text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer shrink-0 border border-emerald-200/80 active:scale-95"
+            className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-extrabold rounded-full text-[10px] flex items-center gap-1 transition-all shadow-xs cursor-pointer shrink-0 border border-emerald-200/80 active:scale-95"
           >
             <Plus className="h-3.5 w-3.5 stroke-[2.5]" />
             <span>New</span>
@@ -157,39 +157,39 @@ export default function WatchlistView({ onSelectStock, onOpenSearch }: Watchlist
       </div>
 
       {/* Stock Items List for Active Tab */}
-      <div ref={listRef} className="p-4 space-y-3 bg-white">
+      <div ref={listRef} className="p-2.5 space-y-2 bg-white">
         {currentStockList.length > 0 ? (
           currentStockList.map((stock) => (
             <div
               key={stock.id}
               onClick={() => onSelectStock(stock)}
-              className="groww-card p-3.5 flex items-center justify-between cursor-pointer hover:border-emerald-400 transition-all group"
+              className="groww-card py-2 px-2.5 flex items-center justify-between cursor-pointer hover:border-emerald-400 transition-all group"
             >
               {/* Left Stock Info */}
-              <div className="flex items-center gap-3">
-                <CompanyLogo symbol={stock.symbol} className="h-10 w-10" />
-                <div>
-                  <h3 className="text-xs font-bold text-slate-700 group-hover:text-emerald-700 transition-colors">
+              <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+                <CompanyLogo symbol={stock.symbol} className="h-8 w-8 shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-[11px] font-bold text-slate-700 group-hover:text-emerald-700 transition-colors truncate">
                     {stock.name}
                   </h3>
-                  <span className="text-[10px] text-slate-400 font-mono">NSE • {stock.symbol}</span>
+                  <span className="text-[9px] text-slate-400 font-mono block truncate">NSE • {stock.symbol}</span>
                 </div>
               </div>
 
               {/* Right Price & Actions */}
-              <div className="flex items-center gap-3 text-right">
-                <LivePriceTag stock={stock} size="normal" />
+              <div className="flex items-center gap-1.5 text-right shrink-0">
+                <LivePriceTag stock={stock} size="normal" align="right" />
 
                 <button
                   onClick={(e) => toggleAlert(stock.id, e)}
-                  className={`p-1.5 rounded-xl border transition-colors ${
+                  className={`p-1 rounded-lg border transition-colors shrink-0 ${
                     alerts[stock.id]
                       ? "bg-emerald-50 border-emerald-200 text-emerald-600"
                       : "border-slate-200 text-slate-400 hover:text-slate-600"
                   }`}
                   title="Toggle Price Alert"
                 >
-                  <Bell className="h-3.5 w-3.5" />
+                  <Bell className="h-3 w-3" />
                 </button>
               </div>
             </div>

@@ -25,47 +25,60 @@ export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
   // Animate the sliding indicator pill to the active tab
   useEffect(() => {
     const activeIndex = tabs.findIndex((t) => t.id === activeTab);
-    const activeButton = buttonRefs.current[activeIndex];
     const indicator = indicatorRef.current;
     const nav = navRef.current;
 
-    if (!activeButton || !indicator || !nav) return;
+    const updatePosition = (useAnimation: boolean = true) => {
+      const activeButton = buttonRefs.current[activeIndex];
+      if (!activeButton || !indicator || !nav) return;
 
-    const navRect = nav.getBoundingClientRect();
-    const btnRect = activeButton.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      const btnRect = activeButton.getBoundingClientRect();
+      const targetX = btnRect.left - navRect.left + btnRect.width / 2 - 16;
 
-    const targetX = btnRect.left - navRect.left + btnRect.width / 2 - 16; // center 32px pill
+      if (!useAnimation) {
+        gsap.set(indicator, { x: targetX, opacity: 1 });
+      } else {
+        gsap.to(indicator, {
+          x: targetX,
+          duration: 0.45,
+          ease: "elastic.out(1, 0.75)",
+        });
+      }
+    };
 
+    updatePosition(!isFirstRender.current);
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      gsap.set(indicator, { x: targetX, opacity: 1 });
-      return;
     }
 
-    // Morphing slide animation with overshoot
-    gsap.to(indicator, {
-      x: targetX,
-      duration: 0.45,
-      ease: "elastic.out(1, 0.75)",
-    });
+    const handleResize = () => updatePosition(false);
+    window.addEventListener("resize", handleResize);
 
     // Pulse the active icon
-    gsap.fromTo(
-      activeButton.querySelector(".nav-icon"),
-      { scale: 0.7, rotate: -8 },
-      { scale: 1, rotate: 0, duration: 0.4, ease: "back.out(2)" }
-    );
+    const activeButton = buttonRefs.current[activeIndex];
+    if (activeButton) {
+      gsap.fromTo(
+        activeButton.querySelector(".nav-icon"),
+        { scale: 0.7, rotate: -8 },
+        { scale: 1, rotate: 0, duration: 0.4, ease: "back.out(2)" }
+      );
 
-    // Bounce the label
-    gsap.fromTo(
-      activeButton.querySelector(".nav-label"),
-      { opacity: 0, y: 4 },
-      { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", delay: 0.08 }
-    );
+      // Bounce the label
+      gsap.fromTo(
+        activeButton.querySelector(".nav-label"),
+        { opacity: 0, y: 4 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", delay: 0.08 }
+      );
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [activeTab]);
 
   return (
-    <nav className="sticky bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] px-4 py-2 mt-auto">
+    <nav className="sticky bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] px-3 py-1 mt-auto">
       <div ref={navRef} className="max-w-md mx-auto flex items-center justify-around relative">
         {/* Sliding Active Indicator Pill */}
         <div
@@ -82,17 +95,17 @@ export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
               key={tab.id}
               ref={(el) => { buttonRefs.current[idx] = el; }}
               onClick={() => setActiveTab(tab.id)}
-              className="relative flex flex-col items-center gap-1 py-1 px-3 cursor-pointer group"
+              className="relative flex flex-col items-center gap-0.5 py-0.5 px-2 cursor-pointer group"
             >
               <div className="nav-icon">
                 <Icon
-                  className={`h-5 w-5 transition-colors duration-200 ${
+                  className={`h-4 w-4 transition-colors duration-200 ${
                     isActive ? "text-emerald-600 stroke-[2.2]" : "text-slate-400 group-hover:text-slate-600"
                   }`}
                 />
               </div>
               <span
-                className={`nav-label text-[10px] font-bold transition-colors duration-200 ${
+                className={`nav-label text-[9px] font-bold transition-colors duration-200 ${
                   isActive ? "text-emerald-600" : "text-slate-400 group-hover:text-slate-600"
                 }`}
               >

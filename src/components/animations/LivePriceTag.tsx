@@ -9,9 +9,10 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 interface LivePriceTagProps {
   stock: StockTickState;
   size?: "normal" | "large";
+  align?: "left" | "right";
 }
 
-export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagProps) {
+export default function LivePriceTag({ stock, size = "normal", align = "left" }: LivePriceTagProps) {
   const priceRef = useRef<HTMLSpanElement>(null);
   const badgeRef = useRef<HTMLSpanElement>(null);
 
@@ -58,11 +59,13 @@ export default function LivePriceTag({ stock, size = "normal" }: LivePriceTagPro
     { scope: priceRef, dependencies: [stock.price, stock.tickTime] }
   );
 
-  const priceTextSize = size === "large" ? "text-base font-semibold" : "text-sm font-semibold";
-  const badgeTextSize = size === "large" ? "text-[11px] font-medium" : "text-[10px] font-medium";
+  const priceTextSize = size === "large" ? "text-base font-semibold" : "text-[12px] font-bold";
+  const badgeTextSize = size === "large" ? "text-[11px] font-medium" : "text-[9px] font-medium";
+
+  const alignClass = align === "right" ? "items-end text-right" : "items-start text-left";
 
   return (
-    <div className="inline-flex flex-col items-start">
+    <div className={`inline-flex flex-col ${alignClass}`}>
       {/* Refined lighter price typography */}
       <span ref={priceRef} className={`${priceTextSize} text-slate-600 block tracking-tight font-mono`}>
         ₹{stock.price.toFixed(2)}

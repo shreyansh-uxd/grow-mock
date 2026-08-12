@@ -32,6 +32,8 @@ export default function Home() {
 
   const handlePresentationComplete = useCallback(() => {
     setShowPresentation(false);
+    setScreenMode("splash");
+    setActiveTab("stocks");
   }, []);
 
   const [screenMode, setScreenMode] = useState<"splash" | "onboarding" | "login" | "app">("splash");
